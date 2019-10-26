@@ -15,8 +15,8 @@ namespace Assignment2.Models
         public virtual int CustomerId { get; set; }
         public virtual Customers Cust { get; set; }
         //Foreign Key
-        public virtual int ProductId { get; set; }
-        public virtual Products Prod { get; set; } 
+        //public virtual int ProductId { get; set; }
+        //public virtual Products Prod { get; set; } 
 
         public virtual int OrderNumber { get; set; }
         public virtual int OrderDate { get; set; }

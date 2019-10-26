@@ -21,7 +21,7 @@ namespace Assignment2.Controllers
         // GET: OrderManager
         public async Task<IActionResult> Index()
         {
-            var assignment2Context = _context.Orders.Include(o => o.Cust).Include(o => o.Prod);
+            var assignment2Context = _context.Orders.Include(o => o.Cust);
             return View(await assignment2Context.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace Assignment2.Controllers
 
             var orders = await _context.Orders
                 .Include(o => o.Cust)
-                .Include(o => o.Prod)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (orders == null)
             {
@@ -49,7 +48,6 @@ namespace Assignment2.Controllers
         public IActionResult Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductName");
             return View();
         }
 
@@ -58,7 +56,7 @@ namespace Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,ProductId,OrderNumber,OrderDate,ShipDate,RequiredDate,Freight,SalesTax,Timestamp,TransactStatus,ErrLock,ErrMsg,Fulfilled,Deleted,Paid,PaymentDate")] Orders orders)
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderNumber,OrderDate,ShipDate,RequiredDate,Freight,SalesTax,Timestamp,TransactStatus,ErrLock,ErrMsg,Fulfilled,Deleted,Paid,PaymentDate")] Orders orders)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +65,6 @@ namespace Assignment2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orders.CustomerId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductName", orders.ProductId);
             return View(orders);
         }
 
@@ -85,7 +82,6 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orders.CustomerId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductName", orders.ProductId);
             return View(orders);
         }
 
@@ -94,7 +90,7 @@ namespace Assignment2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,ProductId,OrderNumber,OrderDate,ShipDate,RequiredDate,Freight,SalesTax,Timestamp,TransactStatus,ErrLock,ErrMsg,Fulfilled,Deleted,Paid,PaymentDate")] Orders orders)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderNumber,OrderDate,ShipDate,RequiredDate,Freight,SalesTax,Timestamp,TransactStatus,ErrLock,ErrMsg,Fulfilled,Deleted,Paid,PaymentDate")] Orders orders)
         {
             if (id != orders.OrderId)
             {
@@ -122,7 +118,6 @@ namespace Assignment2.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId", orders.CustomerId);
-            ViewData["ProductId"] = new SelectList(_context.Products, "ProductId", "ProductName", orders.ProductId);
             return View(orders);
         }
 
@@ -136,7 +131,6 @@ namespace Assignment2.Controllers
 
             var orders = await _context.Orders
                 .Include(o => o.Cust)
-                .Include(o => o.Prod)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (orders == null)
             {
