@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,18 +9,45 @@ namespace Assignment2.Models
 {
     public class Products
     {
+        public Products() { }
+        public Products (int ProductId, String SKU, String ProductName, String ProductDescription, int QuantityPerUnit, Decimal UnitPrice, Decimal Size, String Color, int UnitsInStock, int UnitsOnOrder, int ReorderLevel, string ProductURL)
+        {
+
+            this.ProductId = ProductId;
+            this.SKU = SKU;
+            this.ProductName = ProductName;
+            this.ProductDescription = ProductDescription;
+            this.QuantityPerUnit = QuantityPerUnit;
+            this.UnitPrice = UnitPrice;
+            this.Size = Size;
+            this.Color = Color;
+            this.UnitsInStock = UnitsInStock;
+            this.UnitsOnOrder = UnitsOnOrder;
+            this.ReorderLevel = ReorderLevel;
+            this.ProductURL = ProductURL;
+           
+        }
+
+
+
+
+
         [Key]
         public virtual int ProductId { get; set; } //Primary Key
 
-        //Foreign Key
-        public virtual int SupplierId { get; set; }
-        public virtual Suppliers Supp { get; set; }
-        //Foreign Key
-        public virtual int CategoryId { get; set; }
-        public virtual Category ProductCategory { get; set; }
 
-        public virtual int SKU { get; set; }
-        public virtual int IDSKU { get; set; }
+        [ForeignKey("SuplierId")]
+        [Display(Name = "Brand Name")]
+        public virtual Suppliers CompanyName { get; set; }
+
+
+        [ForeignKey("CategoryId")]
+        [Display(Name = "Category Name")]
+        public virtual Category CategoryName { get; set; }
+
+
+        public virtual String SKU { get; set; }
+       
 
         [Required]
         public virtual String ProductName { get; set; }
@@ -30,29 +58,19 @@ namespace Assignment2.Models
 
         [DataType(DataType.Currency)]
         public virtual Decimal UnitPrice { get; set; }
-
-        [DataType(DataType.Currency)]
-        public virtual Decimal MSRP { get; set; }
-
-        public virtual int AvailableSize { get; set; }
-        public virtual String AvailableColor { get; set; }
-
-        public virtual float Size { get; set; }
-        public virtual  String Color { get; set; }
-        public virtual int Discount { get; set; }
-
-        public virtual int UnitWeight { get; set; }
+        public virtual Decimal Size { get; set; }
+        public virtual String Color { get; set; } 
         public virtual int UnitsInStock { get; set; }
         public virtual int UnitsOnOrder { get; set; }
-
         public virtual int ReorderLevel { get; set; }
 
-        public virtual Boolean ProductAvailable { get; set; }
-        public virtual Boolean DiscountAvailable { get; set; }
 
-        public virtual int CurrentOrder { get; set; }
-        public virtual String Picture { get; set; }
-        public virtual int Ranking { get; set; }
-        public virtual String Note { get; set; }
+
+        [Required(ErrorMessage = "Please select an Image to upload")]
+        [Display(Name = "Image")]
+        public string ProductURL { get; set; }
+
+
+
     }
 }
