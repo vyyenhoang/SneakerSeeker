@@ -14,7 +14,7 @@ namespace Assignment2.Models
 			this.CategoryId = CategoryId;
 			this.CategoryName = CategoryName;
 			this.Description = Description;
-			this.Active = Active
+            this.Active = Active;
 
 		}
 
@@ -33,6 +33,6 @@ namespace Assignment2.Models
 
 		public virtual Boolean Active { get; set; }
 
-		public virtual List<Category> CateName { get; set; }
+		public virtual List<Products> Products { get; set; }
     }
 }
