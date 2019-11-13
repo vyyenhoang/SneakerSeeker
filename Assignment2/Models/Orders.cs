@@ -22,7 +22,12 @@ namespace Assignment2.Models
         public virtual Payment PaymentType { get; set; }
 
 
-        
+
+        [ForeignKey("StatusId")]
+        [Display(Name = "Order Status")]
+        public virtual OrderStatus Status { get; set; }
+
+
         public virtual DateTime OrderDate { get; set; }
 
 
