@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,34 +12,26 @@ namespace Assignment2.Models
         [Key]
         public virtual int OrderId { get; set; } //Primary Key
 
-        //Foreign Key
-        public virtual int CustomerId { get; set; }
-        public virtual Customers Cust { get; set; }
+        [ForeignKey("CustmerId")]
+        [Display(Name = "Customer Name")]
+        public virtual Customers FirstName { get; set; }
 
-		//Foreign Key for payment
-		public virtual int PaymentId { get; set; }
-		public virtual Payment TypeOfPayment { get; set; }
+
+        [ForeignKey("PaymentId")]
+        [Display(Name = "Payment Type")]
+        public virtual Payment PaymentType { get; set; }
+
+
         
+        public virtual DateTime OrderDate { get; set; }
 
-        public virtual int OrderNumber { get; set; }
-        public virtual int OrderDate { get; set; }
-        public virtual String ShipDate { get; set; }
-        public virtual String RequiredDate { get; set; }
 
-        public virtual String Freight { get; set; }
 
-        [DataType(DataType.Currency)]
-        public virtual int SalesTax { get; set; }
 
-        public virtual String Timestamp { get; set; }
-        public virtual String TransactStatus { get; set; }
-        public virtual String ErrLock { get; set; }
-        public virtual String ErrMsg { get; set; }
+        public virtual List<Payment> Payments { get; set; }
 
-        public virtual Boolean Fulfilled { get; set; }
-        public virtual Boolean Deleted { get; set; }
-        public virtual Boolean Paid { get; set; }
-        public virtual String PaymentDate { get; set; }
+
+        public virtual List<OrderStatus> OrderStatuses { get; set; }
 
     }
 }
