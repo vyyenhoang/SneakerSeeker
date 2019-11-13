@@ -14,6 +14,10 @@ namespace Assignment2.Models
         //Foreign Key
         public virtual int CustomerId { get; set; }
         public virtual Customers Cust { get; set; }
+
+		//Foreign Key for payment
+		public virtual int PaymentId { get; set; }
+		public virtual Payment TypeOfPayment { get; set; }
         //Foreign Key
         //public virtual int ProductId { get; set; }
         //public virtual Products Prod { get; set; } 
