@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,33 +9,46 @@ namespace Assignment2.Models
 {
     public class OrderDetails
     {
-        [Key]
+		public OrderDetails() { }
+		public OrderDetails(int OrderDetailId, int OrderId, 
+			int ProductId, int OrderNumber, decimal Price, int Quantity,
+			String Color, Boolean Fulfilled, DateTime ShipDate, DateTime BillDate)
+		{
+			this.OrderDetailId = OrderDetailId;
+			this.OrderId = OrderId;
+			this.ProductId = ProductId;
+			this.OrderNumber = OrderNumber;
+			this.Price = Price;
+			this.Quantity = Quantity;
+			this.Color = Color;
+			this.Fulfilled = Fulfilled;
+			this.ShipDate = ShipDate;
+			this.BillDate = BillDate;
+		}
+
+
+		[Key]
         public virtual int OrderDetailId { get; set; } //Primary Key
 
-        //Foreign Key
-        public virtual int OrderId { get; set; }
-        public virtual Orders Ord { get; set; }
+		[ForeignKey("OrderId")]
+		[Display(Name = "Order Name")]
+        public virtual Orders OrderDate { get; set; }
 
-        //Foreign Key
-        public virtual int ProductId { get; set; }
+		[ForeignKey("ProductId")]
+		[Display(Name = "Product Name")]
         public virtual Products ProductDetails { get; set; }
 
         public virtual int OrderNumber { get; set; }
 
         [DataType(DataType.Currency)]
-        public virtual int Price { get; set; }
-
+        public virtual decimal Price { get; set; }
         public virtual int Quantity { get; set; }
-
-        [DataType(DataType.Currency)]
-        public virtual int Discount { get; set; }
-
         public virtual int IDSKU { get; set; }
-        public virtual int Size { get; set; }
-        public virtual int Color { get; set; }
+        public virtual decimal Size { get; set; }
+        public virtual String Color { get; set; }
         public virtual Boolean Fulfilled { get; set; }
-        public virtual String ShipDate { get; set; }
-        public virtual String BillDate { get; set; }
+        public virtual DateTime ShipDate { get; set; }
+        public virtual DateTime BillDate { get; set; }
 
     }
 }
