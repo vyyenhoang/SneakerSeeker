@@ -26,6 +26,7 @@ namespace Assignment2.Models
         [Required]
         public virtual String CompanyName { get; set; }
         public virtual String URL { get; set; }
+
         public virtual List<Products> Products { get; set; }
 
     }
