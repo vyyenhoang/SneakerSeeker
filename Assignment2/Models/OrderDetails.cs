@@ -14,6 +14,7 @@ namespace Assignment2.Models
         //Foreign Key
         public virtual int OrderId { get; set; }
         public virtual Orders Ord { get; set; }
+
         //Foreign Key
         public virtual int ProductId { get; set; }
         public virtual Products ProductDetails { get; set; }
