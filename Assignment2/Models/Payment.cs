@@ -8,7 +8,16 @@ namespace Assignment2.Models
 {
 	public class Payment
 	{
-		[Key]
+
+        public Payment() { }
+        public Payment(int SupplierId, String CompanyName, String URL, String Logo)
+        {
+            this.PaymentId = PaymentId;
+            this.PaymentType = PaymentType;
+           
+        }
+
+        [Key]
 		public virtual int PaymentId { get; set; } //Primary Key
 
 		[Required]
