@@ -49,9 +49,12 @@ DateTime DateEntered)
 		public virtual String ShipPostalCode { get; set; }
 		public virtual String ShipCountry { get; set; }
 		public virtual DateTime DateEntered { get; set; }
-		
 
-	}
+
+        public virtual List<Orders> Orders { get; set; }
+
+
+    }
 
 }
 
