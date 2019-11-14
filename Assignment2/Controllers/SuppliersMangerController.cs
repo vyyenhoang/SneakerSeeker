@@ -9,22 +9,22 @@ using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
-    public class PaymentsController : Controller
+    public class SuppliersMangerController : Controller
     {
         private readonly Assignment2Context _context;
 
-        public PaymentsController(Assignment2Context context)
+        public SuppliersMangerController(Assignment2Context context)
         {
             _context = context;
         }
 
-        // GET: Payments
+        // GET: SuppliersManger
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Payment.ToListAsync());
+            return View(await _context.Suppliers.ToListAsync());
         }
 
-        // GET: Payments/Details/5
+        // GET: SuppliersManger/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var payment = await _context.Payment
-                .FirstOrDefaultAsync(m => m.PaymentId == id);
-            if (payment == null)
+            var suppliers = await _context.Suppliers
+                .FirstOrDefaultAsync(m => m.SupplierId == id);
+            if (suppliers == null)
             {
                 return NotFound();
             }
 
-            return View(payment);
+            return View(suppliers);
         }
 
-        // GET: Payments/Create
+        // GET: SuppliersManger/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Payments/Create
+        // POST: SuppliersManger/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PaymentId,PaymentType")] Payment payment)
+        public async Task<IActionResult> Create([Bind("SupplierId,CompanyName,URL")] Suppliers suppliers)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(payment);
+                _context.Add(suppliers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(payment);
+            return View(suppliers);
         }
 
-        // GET: Payments/Edit/5
+        // GET: SuppliersManger/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var payment = await _context.Payment.FindAsync(id);
-            if (payment == null)
+            var suppliers = await _context.Suppliers.FindAsync(id);
+            if (suppliers == null)
             {
                 return NotFound();
             }
-            return View(payment);
+            return View(suppliers);
         }
 
-        // POST: Payments/Edit/5
+        // POST: SuppliersManger/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PaymentId,PaymentType")] Payment payment)
+        public async Task<IActionResult> Edit(int id, [Bind("SupplierId,CompanyName,URL")] Suppliers suppliers)
         {
-            if (id != payment.PaymentId)
+            if (id != suppliers.SupplierId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace Assignment2.Controllers
             {
                 try
                 {
-                    _context.Update(payment);
+                    _context.Update(suppliers);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PaymentExists(payment.PaymentId))
+                    if (!SuppliersExists(suppliers.SupplierId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace Assignment2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(payment);
+            return View(suppliers);
         }
 
-        // GET: Payments/Delete/5
+        // GET: SuppliersManger/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var payment = await _context.Payment
-                .FirstOrDefaultAsync(m => m.PaymentId == id);
-            if (payment == null)
+            var suppliers = await _context.Suppliers
+                .FirstOrDefaultAsync(m => m.SupplierId == id);
+            if (suppliers == null)
             {
                 return NotFound();
             }
 
-            return View(payment);
+            return View(suppliers);
         }
 
-        // POST: Payments/Delete/5
+        // POST: SuppliersManger/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var payment = await _context.Payment.FindAsync(id);
-            _context.Payment.Remove(payment);
+            var suppliers = await _context.Suppliers.FindAsync(id);
+            _context.Suppliers.Remove(suppliers);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PaymentExists(int id)
+        private bool SuppliersExists(int id)
         {
-            return _context.Payment.Any(e => e.PaymentId == id);
+            return _context.Suppliers.Any(e => e.SupplierId == id);
         }
     }
 }

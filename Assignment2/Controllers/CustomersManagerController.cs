@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Assignment2.Data;
 using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
     public class CustomersManagerController : Controller
     {
-        private readonly Assignment2Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public CustomersManagerController(Assignment2Context context)
+        public CustomersManagerController(ApplicationDbContext context)
         {
             _context = context;
         }

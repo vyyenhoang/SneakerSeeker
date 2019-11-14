@@ -10,7 +10,7 @@ namespace Assignment2.Models
     {
 
         public OrderStatus() { }
-        public OrderStatus (int StatusId, String Status)
+        public OrderStatus(int StatusId, String Status)
         {
             this.StatusId = StatusId;
             this.Status = Status;

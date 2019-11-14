@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Assignment2.Data;
 using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
-    public class SuppliersController : Controller
+    public class SuppliersManagerController : Controller
     {
-        private readonly Assignment2Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public SuppliersController(Assignment2Context context)
+        public SuppliersManagerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Suppliers
+        // GET: SuppliersManager
         public async Task<IActionResult> Index()
         {
             return View(await _context.Suppliers.ToListAsync());
         }
 
-        // GET: Suppliers/Details/5
+        // GET: SuppliersManager/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -42,13 +43,13 @@ namespace Assignment2.Controllers
             return View(suppliers);
         }
 
-        // GET: Suppliers/Create
+        // GET: SuppliersManager/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Suppliers/Create
+        // POST: SuppliersManager/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +65,7 @@ namespace Assignment2.Controllers
             return View(suppliers);
         }
 
-        // GET: Suppliers/Edit/5
+        // GET: SuppliersManager/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,7 +81,7 @@ namespace Assignment2.Controllers
             return View(suppliers);
         }
 
-        // POST: Suppliers/Edit/5
+        // POST: SuppliersManager/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -115,7 +116,7 @@ namespace Assignment2.Controllers
             return View(suppliers);
         }
 
-        // GET: Suppliers/Delete/5
+        // GET: SuppliersManager/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +134,7 @@ namespace Assignment2.Controllers
             return View(suppliers);
         }
 
-        // POST: Suppliers/Delete/5
+        // POST: SuppliersManager/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

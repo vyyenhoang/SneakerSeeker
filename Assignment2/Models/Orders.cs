@@ -17,7 +17,7 @@ namespace Assignment2.Models
         public Orders(DateTime OrderDate)
         {
             this.OrderDate = OrderDate;
-           
+
 
         }
 

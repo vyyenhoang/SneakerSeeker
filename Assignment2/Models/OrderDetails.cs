@@ -9,30 +9,27 @@ namespace Assignment2.Models
 {
     public class OrderDetails
     {
-		public OrderDetails() { }
-		public OrderDetails(int OrderDetailId, Orders OrderId, 
-		Products ProductDetails, int OrderNumber, decimal Price, int Quantity,
-			String Color)
-		{
-			this.OrderDetailId = OrderDetailId;
-			this.OrderDate = OrderDate;
-			this.ProductDetails = ProductDetails;
-			this.OrderNumber = OrderNumber;
-			this.Price = Price;
-			this.Quantity = Quantity;
-			this.Color = Color;
-		}
+        public OrderDetails() { }
+        public OrderDetails(int OrderDetailId, int OrderNumber, decimal Price, int Quantity,
+            String Color)
+        {
+            this.OrderDetailId = OrderDetailId;
+            this.OrderNumber = OrderNumber;
+            this.Price = Price;
+            this.Quantity = Quantity;
+            this.Color = Color;
+        }
 
 
-		[Key]
+        [Key]
         public virtual int OrderDetailId { get; set; } //Primary Key
 
-		[ForeignKey("OrderId")]
-		[Display(Name = "Order Name")]
+        [ForeignKey("OrderId")]
+        [Display(Name = "Order Name")]
         public virtual Orders OrderDate { get; set; }
 
-		[ForeignKey("ProductId")]
-		[Display(Name = "Product Name")]
+        [ForeignKey("ProductId")]
+        [Display(Name = "Product Name")]
         public virtual Products ProductDetails { get; set; }
 
         public virtual int OrderNumber { get; set; }

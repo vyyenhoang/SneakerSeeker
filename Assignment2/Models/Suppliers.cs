@@ -15,7 +15,7 @@ namespace Assignment2.Models
             this.SupplierId = SupplierId;
             this.CompanyName = CompanyName;
             this.URL = URL;
-       
+
         }
 
 

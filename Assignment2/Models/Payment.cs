@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace Assignment2.Models
 {
-	public class Payment
-	{
+    public class Payment
+    {
 
         public Payment() { }
         public Payment(int SupplierId, String CompanyName, String URL, String Logo)
         {
             this.PaymentId = PaymentId;
             this.PaymentType = PaymentType;
-           
+
         }
 
         [Key]
-		public virtual int PaymentId { get; set; } //Primary Key
+        public virtual int PaymentId { get; set; } //Primary Key
 
-		[Required]
-		public virtual String PaymentType { get; set; }
+        [Required]
+        public virtual String PaymentType { get; set; }
 
-	}
+    }
 }

@@ -10,22 +10,22 @@ using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
-    public class CategoriesManagerController : Controller
+    public class OrderStatusManagerController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoriesManagerController(ApplicationDbContext context)
+        public OrderStatusManagerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: CategoriesManager
+        // GET: OrderStatusManager
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Category.ToListAsync());
+            return View(await _context.OrderStatus.ToListAsync());
         }
 
-        // GET: CategoriesManager/Details/5
+        // GET: OrderStatusManager/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
+            var orderStatus = await _context.OrderStatus
+                .FirstOrDefaultAsync(m => m.StatusId == id);
+            if (orderStatus == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(orderStatus);
         }
 
-        // GET: CategoriesManager/Create
+        // GET: OrderStatusManager/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoriesManager/Create
+        // POST: OrderStatusManager/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,Description,ImageURL,Active")] Category category)
+        public async Task<IActionResult> Create([Bind("StatusId,Status")] OrderStatus orderStatus)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
+                _context.Add(orderStatus);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(orderStatus);
         }
 
-        // GET: CategoriesManager/Edit/5
+        // GET: OrderStatusManager/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category.FindAsync(id);
-            if (category == null)
+            var orderStatus = await _context.OrderStatus.FindAsync(id);
+            if (orderStatus == null)
             {
                 return NotFound();
             }
-            return View(category);
+            return View(orderStatus);
         }
 
-        // POST: CategoriesManager/Edit/5
+        // POST: OrderStatusManager/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,Description,ImageURL,Active")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("StatusId,Status")] OrderStatus orderStatus)
         {
-            if (id != category.CategoryId)
+            if (id != orderStatus.StatusId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace Assignment2.Controllers
             {
                 try
                 {
-                    _context.Update(category);
+                    _context.Update(orderStatus);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoryExists(category.CategoryId))
+                    if (!OrderStatusExists(orderStatus.StatusId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace Assignment2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(category);
+            return View(orderStatus);
         }
 
-        // GET: CategoriesManager/Delete/5
+        // GET: OrderStatusManager/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-            if (category == null)
+            var orderStatus = await _context.OrderStatus
+                .FirstOrDefaultAsync(m => m.StatusId == id);
+            if (orderStatus == null)
             {
                 return NotFound();
             }
 
-            return View(category);
+            return View(orderStatus);
         }
 
-        // POST: CategoriesManager/Delete/5
+        // POST: OrderStatusManager/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var category = await _context.Category.FindAsync(id);
-            _context.Category.Remove(category);
+            var orderStatus = await _context.OrderStatus.FindAsync(id);
+            _context.OrderStatus.Remove(orderStatus);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CategoryExists(int id)
+        private bool OrderStatusExists(int id)
         {
-            return _context.Category.Any(e => e.CategoryId == id);
+            return _context.OrderStatus.Any(e => e.StatusId == id);
         }
     }
 }

@@ -5,26 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Assignment2.Data;
 using Assignment2.Models;
 
 namespace Assignment2.Controllers
 {
-    public class ProductsController : Controller
+    public class PaymentsManagerController : Controller
     {
-        private readonly Assignment2Context _context;
+        private readonly ApplicationDbContext _context;
 
-        public ProductsController(Assignment2Context context)
+        public PaymentsManagerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Products
+        // GET: PaymentsManager
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(await _context.Payment.ToListAsync());
         }
 
-        // GET: Products/Details/5
+        // GET: PaymentsManager/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,39 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var products = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (products == null)
+            var payment = await _context.Payment
+                .FirstOrDefaultAsync(m => m.PaymentId == id);
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(products);
+            return View(payment);
         }
 
-        // GET: Products/Create
+        // GET: PaymentsManager/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: PaymentsManager/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,SKU,ProductName,ProductDescription,QuantityPerUnit,UnitPrice,Size,Color,UnitsInStock,UnitsOnOrder,ReorderLevel,ProductURL")] Products products)
+        public async Task<IActionResult> Create([Bind("PaymentId,PaymentType")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(products);
+                _context.Add(payment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(products);
+            return View(payment);
         }
 
-        // GET: Products/Edit/5
+        // GET: PaymentsManager/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +73,22 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var products = await _context.Products.FindAsync(id);
-            if (products == null)
+            var payment = await _context.Payment.FindAsync(id);
+            if (payment == null)
             {
                 return NotFound();
             }
-            return View(products);
+            return View(payment);
         }
 
-        // POST: Products/Edit/5
+        // POST: PaymentsManager/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,SKU,ProductName,ProductDescription,QuantityPerUnit,UnitPrice,Size,Color,UnitsInStock,UnitsOnOrder,ReorderLevel,ProductURL")] Products products)
+        public async Task<IActionResult> Edit(int id, [Bind("PaymentId,PaymentType")] Payment payment)
         {
-            if (id != products.ProductId)
+            if (id != payment.PaymentId)
             {
                 return NotFound();
             }
@@ -96,12 +97,12 @@ namespace Assignment2.Controllers
             {
                 try
                 {
-                    _context.Update(products);
+                    _context.Update(payment);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductsExists(products.ProductId))
+                    if (!PaymentExists(payment.PaymentId))
                     {
                         return NotFound();
                     }
@@ -112,10 +113,10 @@ namespace Assignment2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(products);
+            return View(payment);
         }
 
-        // GET: Products/Delete/5
+        // GET: PaymentsManager/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +124,30 @@ namespace Assignment2.Controllers
                 return NotFound();
             }
 
-            var products = await _context.Products
-                .FirstOrDefaultAsync(m => m.ProductId == id);
-            if (products == null)
+            var payment = await _context.Payment
+                .FirstOrDefaultAsync(m => m.PaymentId == id);
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return View(products);
+            return View(payment);
         }
 
-        // POST: Products/Delete/5
+        // POST: PaymentsManager/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var products = await _context.Products.FindAsync(id);
-            _context.Products.Remove(products);
+            var payment = await _context.Payment.FindAsync(id);
+            _context.Payment.Remove(payment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductsExists(int id)
+        private bool PaymentExists(int id)
         {
-            return _context.Products.Any(e => e.ProductId == id);
+            return _context.Payment.Any(e => e.PaymentId == id);
         }
     }
 }

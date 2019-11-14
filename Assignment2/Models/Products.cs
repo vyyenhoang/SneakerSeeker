@@ -10,7 +10,7 @@ namespace Assignment2.Models
     public class Products
     {
         public Products() { }
-        public Products (int ProductId, String SKU, String ProductName, String ProductDescription, int QuantityPerUnit, Decimal UnitPrice, Decimal Size, String Color, int UnitsInStock, int UnitsOnOrder, int ReorderLevel, string ProductURL)
+        public Products(int ProductId, String SKU, String ProductName, String ProductDescription, int QuantityPerUnit, Decimal UnitPrice, Decimal Size, String Color, int UnitsInStock, int UnitsOnOrder, int ReorderLevel, string ProductURL)
         {
 
             this.ProductId = ProductId;
@@ -25,7 +25,7 @@ namespace Assignment2.Models
             this.UnitsOnOrder = UnitsOnOrder;
             this.ReorderLevel = ReorderLevel;
             this.ProductURL = ProductURL;
-           
+
         }
 
 
@@ -47,11 +47,11 @@ namespace Assignment2.Models
 
 
         public virtual String SKU { get; set; }
-       
+
 
         [Required]
         public virtual String ProductName { get; set; }
-        
+
         public virtual String ProductDescription { get; set; }
 
         public virtual int QuantityPerUnit { get; set; }
@@ -59,7 +59,7 @@ namespace Assignment2.Models
         [DataType(DataType.Currency)]
         public virtual Decimal UnitPrice { get; set; }
         public virtual Decimal Size { get; set; }
-        public virtual String Color { get; set; } 
+        public virtual String Color { get; set; }
         public virtual int UnitsInStock { get; set; }
         public virtual int UnitsOnOrder { get; set; }
         public virtual int ReorderLevel { get; set; }
