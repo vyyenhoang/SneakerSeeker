@@ -27,5 +27,7 @@ namespace Assignment2.Models
         public DbSet<Assignment2.Models.Customers> Customers { get; set; }
 
         public DbSet<Assignment2.Models.Payment> Payment { get; set; }
+
+        public DbSet<Assignment2.Models.OrderStatus> OrderStatus { get; set; }
     }
 }
