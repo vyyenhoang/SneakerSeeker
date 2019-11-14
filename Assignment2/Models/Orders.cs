@@ -8,7 +8,21 @@ using System.Threading.Tasks;
 namespace Assignment2.Models
 {
     public class Orders
+
     {
+
+
+
+        public Orders() { }
+        public Orders(DateTime OrderDate)
+        {
+            this.OrderDate = OrderDate;
+           
+
+        }
+
+
+
         [Key]
         public virtual int OrderId { get; set; } //Primary Key
 
