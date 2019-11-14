@@ -12,7 +12,7 @@ namespace Assignment2.Models
 		public OrderDetails() { }
 		public OrderDetails(int OrderDetailId, Orders OrderId, 
 		Products ProductDetails, int OrderNumber, decimal Price, int Quantity,
-			String Color, Boolean Fulfilled, DateTime ShipDate, DateTime BillDate)
+			String Color)
 		{
 			this.OrderDetailId = OrderDetailId;
 			this.OrderDate = OrderDate;
@@ -21,9 +21,6 @@ namespace Assignment2.Models
 			this.Price = Price;
 			this.Quantity = Quantity;
 			this.Color = Color;
-			this.Fulfilled = Fulfilled;
-			this.ShipDate = ShipDate;
-			this.BillDate = BillDate;
 		}
 
 
@@ -46,9 +43,6 @@ namespace Assignment2.Models
         public virtual int IDSKU { get; set; }
         public virtual decimal Size { get; set; }
         public virtual String Color { get; set; }
-        public virtual Boolean Fulfilled { get; set; }
-        public virtual DateTime ShipDate { get; set; }
-        public virtual DateTime BillDate { get; set; }
 
     }
 }
