@@ -10,13 +10,13 @@ namespace Assignment2.Models
     public class OrderDetails
     {
 		public OrderDetails() { }
-		public OrderDetails(int OrderDetailId, int OrderId, 
-			int ProductId, int OrderNumber, decimal Price, int Quantity,
+		public OrderDetails(int OrderDetailId, Orders OrderId, 
+		Products ProductDetails, int OrderNumber, decimal Price, int Quantity,
 			String Color, Boolean Fulfilled, DateTime ShipDate, DateTime BillDate)
 		{
 			this.OrderDetailId = OrderDetailId;
-			this.OrderId = OrderId;
-			this.ProductId = ProductId;
+			this.OrderDate = OrderDate;
+			this.ProductDetails = ProductDetails;
 			this.OrderNumber = OrderNumber;
 			this.Price = Price;
 			this.Quantity = Quantity;
