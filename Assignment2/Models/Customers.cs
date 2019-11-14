@@ -11,7 +11,6 @@ namespace Assignment2.Models
 		public Customers() { }
 		public Customers(int CustomerId, String FirstName, String LastName, String Address,
 String City, String State, String PostalCode, String Phone, String Email,
-String ShipAddress, String ShipCity, String ShipRegion, String ShipPostalCode, String ShipCountry,
 DateTime DateEntered)
 		{
 			this.CustomerId = CustomerId;
@@ -23,11 +22,6 @@ DateTime DateEntered)
 			this.PostalCode = PostalCode;
 			this.Phone = Phone;
 			this.Email = Email;
-			this.ShipAddress = ShipAddress;
-			this.ShipCity = ShipCity;
-			this.ShipRegion = ShipRegion;
-			this.ShipPostalCode = ShipPostalCode;
-			this.ShipCountry = ShipCountry;
 			this.DateEntered = DateEntered;
 
 		}
@@ -43,11 +37,6 @@ DateTime DateEntered)
 		public virtual String PostalCode { get; set; }
 		public virtual String Phone { get; set; }
 		public virtual String Email { get; set; }
-		public virtual String ShipAddress { get; set; }
-		public virtual String ShipCity { get; set; }
-		public virtual String ShipRegion { get; set; }
-		public virtual String ShipPostalCode { get; set; }
-		public virtual String ShipCountry { get; set; }
 		public virtual DateTime DateEntered { get; set; }
 
 
