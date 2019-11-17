@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SneakerSeeker3.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Stripe;
 
 namespace SneakerSeeker3
 {
@@ -43,10 +44,12 @@ namespace SneakerSeeker3
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		[Obsolete]
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
+			StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
+			if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
