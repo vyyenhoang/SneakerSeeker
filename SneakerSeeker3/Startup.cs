@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using SneakerSeeker3.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Stripe;
+//using Stripe;
 
 namespace SneakerSeeker3
 {
@@ -48,7 +48,7 @@ namespace SneakerSeeker3
 		[Obsolete]
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-			StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
+			//StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
 			if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

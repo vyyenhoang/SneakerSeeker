@@ -71,4 +71,28 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/js/dropzone.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myDropzone = new Dropzone("#fileUploadZone", { url: "@(Url.Action("UploadAsync", "Home"))"});
+            myDropzone.on("complete", function (file) {
+                if (file.xhr.status == 200) {
+                    let filePath = JSON.parse(file.xhr.response).filePath;
+                    $(".image-path").val(filePath);
+                    $(".image-path").removeAttr("data-val");
+                    $(".field-validation-error[data-valmsg-for='ProductURL']").html("");
+                } else {
+                    $(".file-error").html("Sorry, the file could not be uploaded. Please try again later.");
+                }
+            });
+            myDropzone.on("addedfile", function (file) {
+                $(".dz-success-mark").remove();
+                $(".dz-error-mark").remove();
+                file.previewElement.addEventListener("click", function() {
+                    myDropzone.removeFile(file);
+                });
+            });
+        });
+    </script>
 }

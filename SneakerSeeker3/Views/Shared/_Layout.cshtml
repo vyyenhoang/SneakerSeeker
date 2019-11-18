@@ -33,6 +33,13 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Manager <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="ProductsManager" asp-action="Create">Add</a></li>
+                            <li><a asp-area="" asp-controller="ProductsManager" asp-action="Index">View All</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>

@@ -39,19 +39,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="SupplierId" class="control-label"></label>
-                <select asp-for="SupplierId" class ="form-control" asp-items="ViewBag.SupplierId"></select>
+                <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ItemSizeId" class="control-label"></label>
-                <select asp-for="ItemSizeId" class ="form-control" asp-items="ViewBag.ItemSizeId"></select>
+                <select asp-for="ItemSizeId" class="form-control" asp-items="ViewBag.ItemSizeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="ItemColorId" class="control-label"></label>
-                <select asp-for="ItemColorId" class ="form-control" asp-items="ViewBag.ItemColorId"></select>
+                <select asp-for="ItemColorId" class="form-control" asp-items="ViewBag.ItemColorId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -66,4 +66,27 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/dropzone.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myDropzone = new Dropzone("#fileUploadZone", { url: "@(Url.Action("UploadAsync", "Home"))"});
+            myDropzone.on("complete", function (file) {
+                if (file.xhr.status == 200) {
+                    let filePath = JSON.parse(file.xhr.response).filePath;
+                    $(".image-path").val(filePath);
+                    $(".image-path").removeAttr("data-val");
+                    $(".field-validation-error[data-valmsg-for='ProductURL']").html("");
+                } else {
+                    $(".file-error").html("Sorry, the file could not be uploaded. Please try again later.");
+                }
+            });
+            myDropzone.on("addedfile", function (file) {
+                $(".dz-success-mark").remove();
+                $(".dz-error-mark").remove();
+                file.previewElement.addEventListener("click", function() {
+                    myDropzone.removeFile(file);
+                });
+            });
+        });
+    </script>
 }

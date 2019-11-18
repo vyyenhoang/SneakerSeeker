@@ -38,7 +38,7 @@
             @Html.DisplayNameFor(model => model.ProductURL)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ProductURL)
+            <img src="@(Model.ProductURL)" style="max-height:200px" />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Cat)
@@ -64,6 +64,7 @@
         <dd>
             @Html.DisplayFor(model => model.color.Color)
         </dd>
+       
     </dl>
 </div>
 <div>

@@ -10,7 +10,7 @@ using SneakerSeeker3.Data;
 namespace SneakerSeeker3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191116211857_Initialize")]
+    [Migration("20191118025946_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
