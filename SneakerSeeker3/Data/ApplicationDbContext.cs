@@ -19,5 +19,6 @@ namespace SneakerSeeker3.Data
         public DbSet<SneakerSeeker3.Models.ItemColor> ItemColor { get; set; }
         public DbSet<SneakerSeeker3.Models.ItemSize> ItemSize { get; set; }
         public DbSet<SneakerSeeker3.Models.ItemReview> ItemReview { get; set; }
-    }
+		public DbSet<SneakerSeeker3.Models.CartItem> CartItems { get; set; }
+	}
 }

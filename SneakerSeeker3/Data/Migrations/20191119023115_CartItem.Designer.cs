@@ -10,8 +10,8 @@ using SneakerSeeker3.Data;
 namespace SneakerSeeker3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191118025946_Initialize")]
-    partial class Initialize
+    [Migration("20191119023115_CartItem")]
+    partial class CartItem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -186,6 +186,42 @@ namespace SneakerSeeker3.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("SneakerSeeker3.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CustomerId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CartId");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Qty");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("SneakerSeeker3.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -205,6 +241,35 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
+                    b.Property<DateTime>("DateEntered");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<string>("PostalCode");
+
+                    b.Property<string>("State");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.ItemColor", b =>
@@ -252,6 +317,67 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasKey("ItemColorId");
 
                     b.ToTable("ItemSize");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.Order", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<int>("PaymentId");
+
+                    b.Property<int>("StatusId");
+
+                    b.Property<int?>("cartId");
+
+                    b.HasKey("OrderId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("PaymentId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("cartId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("StatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Status")
+                        .IsRequired();
+
+                    b.HasKey("StatusId");
+
+                    b.ToTable("OrderStatus");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.Payment", b =>
+                {
+                    b.Property<int>("PaymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CustomerId");
+
+                    b.Property<string>("PaymentType")
+                        .IsRequired();
+
+                    b.HasKey("PaymentId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Product", b =>
@@ -353,11 +479,59 @@ namespace SneakerSeeker3.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("SneakerSeeker3.Models.Cart", b =>
+                {
+                    b.HasOne("SneakerSeeker3.Models.Customer", "Cust")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.CartItem", b =>
+                {
+                    b.HasOne("SneakerSeeker3.Models.Cart", "cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SneakerSeeker3.Models.Product", "Pro")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("SneakerSeeker3.Models.ItemReview", b =>
                 {
                     b.HasOne("SneakerSeeker3.Models.Product", "Pro")
                         .WithMany("ItemReviews")
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.Order", b =>
+                {
+                    b.HasOne("SneakerSeeker3.Models.Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("SneakerSeeker3.Models.Payment", "Pay")
+                        .WithMany("Ord")
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SneakerSeeker3.Models.OrderStatus", "Stat")
+                        .WithMany("Ord")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SneakerSeeker3.Models.Cart", "cart")
+                        .WithMany()
+                        .HasForeignKey("cartId");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.Payment", b =>
+                {
+                    b.HasOne("SneakerSeeker3.Models.Customer", "Cust")
+                        .WithMany("Payment")
+                        .HasForeignKey("CustomerId");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Product", b =>
