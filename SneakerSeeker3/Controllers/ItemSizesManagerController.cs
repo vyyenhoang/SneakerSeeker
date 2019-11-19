@@ -34,7 +34,7 @@ namespace SneakerSeeker3.Controllers
             }
 
             var itemSize = await _context.ItemSize
-                .FirstOrDefaultAsync(m => m.ItemColorId == id);
+                .FirstOrDefaultAsync(m => m.ItemSizeId == id);
             if (itemSize == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace SneakerSeeker3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemColorId,Size")] ItemSize itemSize)
+        public async Task<IActionResult> Create([Bind("ItemSizeId,Size")] ItemSize itemSize)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace SneakerSeeker3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ItemColorId,Size")] ItemSize itemSize)
+        public async Task<IActionResult> Edit(int id, [Bind("ItemSizeId,Size")] ItemSize itemSize)
         {
-            if (id != itemSize.ItemColorId)
+            if (id != itemSize.ItemSizeId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace SneakerSeeker3.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ItemSizeExists(itemSize.ItemColorId))
+                    if (!ItemSizeExists(itemSize.ItemSizeId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace SneakerSeeker3.Controllers
             }
 
             var itemSize = await _context.ItemSize
-                .FirstOrDefaultAsync(m => m.ItemColorId == id);
+                .FirstOrDefaultAsync(m => m.ItemSizeId == id);
             if (itemSize == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace SneakerSeeker3.Controllers
 
         private bool ItemSizeExists(int id)
         {
-            return _context.ItemSize.Any(e => e.ItemColorId == id);
+            return _context.ItemSize.Any(e => e.ItemSizeId == id);
         }
     }
 }

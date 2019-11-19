@@ -51,10 +51,10 @@ namespace SneakerSeeker3.Controllers
         // GET: ProductsManager/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "CategoryId", "CategoryName");
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName");
-            ViewData["ItemColorId"] = new SelectList(_context.Set<ItemColor>(), "ItemColorId", "Color");
-            ViewData["ItemSizeId"] = new SelectList(_context.Set<ItemSize>(), "ItemColorId", "Size");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
+            ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName");
+            ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color");
+            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size");
             return View();
         }
 
@@ -71,10 +71,10 @@ namespace SneakerSeeker3.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
-            ViewData["ItemColorId"] = new SelectList(_context.Set<ItemColor>(), "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.Set<ItemSize>(), "ItemColorId", "Size", product.ItemSizeId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
+            ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
+            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 
@@ -91,10 +91,10 @@ namespace SneakerSeeker3.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
-            ViewData["ItemColorId"] = new SelectList(_context.Set<ItemColor>(), "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.Set<ItemSize>(), "ItemColorId", "Size", product.ItemSizeId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
+            ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
+            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 
@@ -130,10 +130,10 @@ namespace SneakerSeeker3.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "CategoryId", "CategoryName", product.CategoryId);
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
-            ViewData["ItemColorId"] = new SelectList(_context.Set<ItemColor>(), "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.Set<ItemSize>(), "ItemColorId", "Size", product.ItemSizeId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
+            ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
+            ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
+            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 

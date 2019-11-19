@@ -10,8 +10,8 @@ using SneakerSeeker3.Data;
 namespace SneakerSeeker3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191119023115_CartItem")]
-    partial class CartItem
+    [Migration("20191119050806_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -241,6 +241,11 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new { CategoryId = 3, Active = true, CategoryName = "Basketball", Description = "Shoes for basketball player" },
+                        new { CategoryId = 4, Active = true, CategoryName = "Running", Description = "Shoes for runner" }
+                    );
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Customer", b =>
@@ -284,6 +289,11 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasKey("ItemColorId");
 
                     b.ToTable("ItemColor");
+
+                    b.HasData(
+                        new { ItemColorId = 3, Color = "Yellow" },
+                        new { ItemColorId = 4, Color = "Black" }
+                    );
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.ItemReview", b =>
@@ -307,16 +317,21 @@ namespace SneakerSeeker3.Data.Migrations
 
             modelBuilder.Entity("SneakerSeeker3.Models.ItemSize", b =>
                 {
-                    b.Property<int>("ItemColorId")
+                    b.Property<int>("ItemSizeId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Size")
                         .IsRequired();
 
-                    b.HasKey("ItemColorId");
+                    b.HasKey("ItemSizeId");
 
                     b.ToTable("ItemSize");
+
+                    b.HasData(
+                        new { ItemSizeId = 3, Size = "3" },
+                        new { ItemSizeId = 4, Size = "4" }
+                    );
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Order", b =>
@@ -416,6 +431,11 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new { ProductId = 3, CategoryId = 3, ItemColorId = 3, ItemSizeId = 3, ProductDescription = "This is a limited basketball shoes from Bitis", ProductName = "Onemez Flash", ProductURL = "https://www.famousfootwear.com/ProductImages/shoes_ia92569.jpg?preset=details", SKU = "0003R", SupplierId = 3, UnitPrice = 150m },
+                        new { ProductId = 4, CategoryId = 4, ItemColorId = 4, ItemSizeId = 4, ProductDescription = "This is a limited running shoes from Bitis", ProductName = "Anizuka Light", ProductURL = "https://i.dmarge.com/2019/05/feature-920x620.jpg", SKU = "0002B", SupplierId = 4, UnitPrice = 200m }
+                    );
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Supplier", b =>
@@ -432,6 +452,11 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasKey("SupplierId");
 
                     b.ToTable("Supplier");
+
+                    b.HasData(
+                        new { SupplierId = 3, CompanyName = "Bitis", URL = "https://www.logolynx.com/images/logolynx/00/00ea37cde6d4631b8be5409db9f25f3a.jpeg" },
+                        new { SupplierId = 4, CompanyName = "Wonderful Brand", URL = "https://www.logolynx.com/images/logolynx/30/3069ba75b7888a74f8cd6033965b8e2a.png" }
+                    );
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

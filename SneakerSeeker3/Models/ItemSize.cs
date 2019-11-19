@@ -9,7 +9,7 @@ namespace SneakerSeeker3.Models
     public class ItemSize
     {
         [Key]
-        public virtual int ItemColorId { get; set; }
+        public virtual int ItemSizeId { get; set; }
 
         [Required]
         public virtual String Size { get; set; }
