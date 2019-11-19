@@ -80,6 +80,10 @@
                     }
                 </ul>
                 <partial name="_LoginPartial" />
+                <form class="form-inline" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#body" asp-controller="search" asp-action="Index">
+                    <input name="query" id="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
