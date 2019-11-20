@@ -403,8 +403,6 @@ namespace SneakerSeeker3.Data.Migrations
 
                     b.Property<int>("ItemColorId");
 
-                    b.Property<int>("ItemSizeId");
-
                     b.Property<string>("ProductDescription");
 
                     b.Property<string>("ProductName")
@@ -418,21 +416,23 @@ namespace SneakerSeeker3.Data.Migrations
 
                     b.Property<decimal>("UnitPrice");
 
+                    b.Property<int?>("sizeItemSizeId");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ItemColorId");
 
-                    b.HasIndex("ItemSizeId");
-
                     b.HasIndex("SupplierId");
+
+                    b.HasIndex("sizeItemSizeId");
 
                     b.ToTable("Product");
 
                     b.HasData(
-                        new { ProductId = 3, CategoryId = 3, ItemColorId = 3, ItemSizeId = 3, ProductDescription = "This is a limited basketball shoes from Bitis", ProductName = "Onemez Flash", ProductURL = "https://www.famousfootwear.com/ProductImages/shoes_ia92569.jpg?preset=details", SKU = "0003R", SupplierId = 3, UnitPrice = 150m },
-                        new { ProductId = 4, CategoryId = 4, ItemColorId = 4, ItemSizeId = 4, ProductDescription = "This is a limited running shoes from Bitis", ProductName = "Anizuka Light", ProductURL = "https://i.dmarge.com/2019/05/feature-920x620.jpg", SKU = "0002B", SupplierId = 4, UnitPrice = 200m }
+                        new { ProductId = 3, CategoryId = 3, ItemColorId = 3, ProductDescription = "This is a limited basketball shoes from Bitis", ProductName = "Onemez Flash", ProductURL = "https://www.famousfootwear.com/ProductImages/shoes_ia92569.jpg?preset=details", SKU = "0003R", SupplierId = 3, UnitPrice = 150m },
+                        new { ProductId = 4, CategoryId = 4, ItemColorId = 4, ProductDescription = "This is a limited running shoes from Bitis", ProductName = "Anizuka Light", ProductURL = "https://i.dmarge.com/2019/05/feature-920x620.jpg", SKU = "0002B", SupplierId = 4, UnitPrice = 200m }
                     );
                 });
 
@@ -569,15 +569,14 @@ namespace SneakerSeeker3.Data.Migrations
                         .HasForeignKey("ItemColorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SneakerSeeker3.Models.ItemSize", "size")
-                        .WithMany("Products")
-                        .HasForeignKey("ItemSizeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("SneakerSeeker3.Models.Supplier", "Sup")
                         .WithMany("Products")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SneakerSeeker3.Models.ItemSize", "size")
+                        .WithMany("Products")
+                        .HasForeignKey("sizeItemSizeId");
                 });
 #pragma warning restore 612, 618
         }

@@ -22,7 +22,7 @@ namespace SneakerSeeker3.Controllers
         // GET: ProductsManager
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Include(p => p.size);
+            var applicationDbContext = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -38,7 +38,6 @@ namespace SneakerSeeker3.Controllers
                 .Include(p => p.Cat)
                 .Include(p => p.Sup)
                 .Include(p => p.color)
-                .Include(p => p.size)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
@@ -54,7 +53,6 @@ namespace SneakerSeeker3.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName");
             ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color");
-            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size");
             return View();
         }
 
@@ -63,7 +61,7 @@ namespace SneakerSeeker3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,SKU,ProductName,ProductDescription,UnitPrice,ProductURL,CategoryId,SupplierId,ItemSizeId,ItemColorId")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,SKU,ProductName,ProductDescription,UnitPrice,ProductURL,CategoryId,SupplierId,ItemColorId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -74,7 +72,6 @@ namespace SneakerSeeker3.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
             ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 
@@ -94,7 +91,6 @@ namespace SneakerSeeker3.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
             ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 
@@ -103,7 +99,7 @@ namespace SneakerSeeker3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,SKU,ProductName,ProductDescription,UnitPrice,ProductURL,CategoryId,SupplierId,ItemSizeId,ItemColorId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,SKU,ProductName,ProductDescription,UnitPrice,ProductURL,CategoryId,SupplierId,ItemColorId")] Product product)
         {
             if (id != product.ProductId)
             {
@@ -133,7 +129,6 @@ namespace SneakerSeeker3.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", product.CategoryId);
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName", product.SupplierId);
             ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color", product.ItemColorId);
-            ViewData["ItemSizeId"] = new SelectList(_context.ItemSize, "ItemSizeId", "Size", product.ItemSizeId);
             return View(product);
         }
 
@@ -149,7 +144,6 @@ namespace SneakerSeeker3.Controllers
                 .Include(p => p.Cat)
                 .Include(p => p.Sup)
                 .Include(p => p.color)
-                .Include(p => p.size)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

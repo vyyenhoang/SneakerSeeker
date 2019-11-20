@@ -52,8 +52,6 @@ namespace SneakerSeeker3.Models
         public virtual int SupplierId { get; set; }
         public virtual Supplier Sup { get; set; }
 
-
-        public virtual int ItemSizeId { get; set; }
         public virtual ItemSize size { get; set; }
 
 

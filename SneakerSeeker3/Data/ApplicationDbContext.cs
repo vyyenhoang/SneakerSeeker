@@ -30,8 +30,8 @@ namespace SneakerSeeker3.Data
 {
     base.OnModelCreating(modelBuilder);
     modelBuilder.Entity<Product>().HasData(
-        new Models.Product() { ProductId = 3, SKU = "0003R", ProductName = "Onemez Flash", ProductDescription = "This is a limited basketball shoes from Bitis", CategoryId = 3, SupplierId = 3, ItemColorId = 3, ItemSizeId = 3, UnitPrice = 150, ProductURL = "https://www.famousfootwear.com/ProductImages/shoes_ia92569.jpg?preset=details" },
-        new Models.Product() { ProductId = 4, SKU = "0002B", ProductName = "Anizuka Light", ProductDescription = "This is a limited running shoes from Bitis", CategoryId = 4, SupplierId = 4, ItemColorId = 4, ItemSizeId = 4, UnitPrice = 200, ProductURL = "https://i.dmarge.com/2019/05/feature-920x620.jpg" });
+        new Models.Product() { ProductId = 3, SKU = "0003R", ProductName = "Onemez Flash", ProductDescription = "This is a limited basketball shoes from Bitis", CategoryId = 3, SupplierId = 3, ItemColorId = 3, UnitPrice = 150, ProductURL = "https://www.famousfootwear.com/ProductImages/shoes_ia92569.jpg?preset=details" },
+        new Models.Product() { ProductId = 4, SKU = "0002B", ProductName = "Anizuka Light", ProductDescription = "This is a limited running shoes from Bitis", CategoryId = 4, SupplierId = 4, ItemColorId = 4,  UnitPrice = 200, ProductURL = "https://i.dmarge.com/2019/05/feature-920x620.jpg" });
 
 
             modelBuilder.Entity<Category>().HasData(
