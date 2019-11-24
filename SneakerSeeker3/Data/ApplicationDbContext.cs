@@ -7,8 +7,8 @@ using SneakerSeeker3.Models;
 
 namespace SneakerSeeker3.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
-    {
+	public class ApplicationDbContext : IdentityDbContext<SneakerSeekerUser, StoreRole, string>
+	{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

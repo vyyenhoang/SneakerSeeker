@@ -16,7 +16,6 @@ body {
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
-    color:#000;
 }
 
 /* Make .svg files in the carousel display properly in older browsers */
@@ -35,17 +34,4 @@ body {
     .carousel-caption {
         display: none;
     }
-}
-
-
-.dropzone-area.dz-clickable {
-    cursor: pointer;
-}
-
-.dropzone-area {
-    border: 2px dashed #0087F7;
-    border-radius: 5px;
-    background: white;
-    min-height: 150px;
-    padding: 54px 54px;
 }

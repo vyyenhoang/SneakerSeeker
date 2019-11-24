@@ -22,7 +22,7 @@ namespace SneakerSeeker3.Models
         public virtual int Id { get; set; }
 
 
-        public virtual Customer Cust { get; set; }
+        public virtual SneakerSeekerUser Cust { get; set; }
         public virtual List<CartItem> CartItems { get; set; }
 
 		//public static Cart GetCart(IServiceProvider services)

@@ -10,6 +10,13 @@ namespace SneakerSeeker3.Models
 	{
 		public StoreRole() : base() { }
 		public StoreRole(string roleName) : base(roleName) { }
+		public StoreRole(string roleName, string description, DateTime creationDate  ) : base(roleName) {
+			this.Description = description;
+			this.CreationDate = creationDate;
+			
+		}
+		public string Description { get; set; }
+		public DateTime CreationDate { get; set; }
 	}
 }
 

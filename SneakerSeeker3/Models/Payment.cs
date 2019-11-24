@@ -25,7 +25,7 @@ namespace SneakerSeeker3.Models
         public virtual String PaymentType { get; set; }
 
        
-        public virtual Customer Cust { get; set; }
+        public virtual SneakerSeekerUser Cust { get; set; }
 
         public virtual List<Order> Ord { get; set; }
 

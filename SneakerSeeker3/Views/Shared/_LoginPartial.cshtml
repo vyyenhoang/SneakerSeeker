@@ -1,7 +1,7 @@
 @using Microsoft.AspNetCore.Identity
-
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using SneakerSeeker3.Models
+@inject SignInManager<SneakerSeekerUser> SignInManager
+@inject UserManager<SneakerSeekerUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

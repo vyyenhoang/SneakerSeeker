@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SneakerSeeker3.Models
 {
-    public class Customer : IdentityUser
+    public class SneakerSeekerUser : IdentityUser
     {
-        public Customer() { }
-        public Customer(String FirstName, String LastName)
+        public SneakerSeekerUser() : base() { }
+        public SneakerSeekerUser(String FirstName, String LastName)
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
