@@ -12,6 +12,12 @@
     <Compile Remove="Data\Migrations\20191119020101_Initialize.Designer.cs" />
     <Compile Remove="Data\Migrations\20191119023115_CartItem.cs" />
     <Compile Remove="Data\Migrations\20191119023115_CartItem.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191120212351_Initialize.cs" />
+    <Compile Remove="Data\Migrations\20191120212351_Initialize.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191124185554_UpdateCustomerModel.cs" />
+    <Compile Remove="Data\Migrations\20191124185554_UpdateCustomerModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.cs" />
+    <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

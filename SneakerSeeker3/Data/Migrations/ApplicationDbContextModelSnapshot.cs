@@ -73,6 +73,9 @@ namespace SneakerSeeker3.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -112,6 +115,8 @@ namespace SneakerSeeker3.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -190,11 +195,11 @@ namespace SneakerSeeker3.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<string>("CustId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustId");
 
                     b.ToTable("Cart");
                 });
@@ -244,35 +249,6 @@ namespace SneakerSeeker3.Data.Migrations
                         new { CategoryId = 3, Active = true, CategoryName = "Basketball", Description = "Shoes for basketball player" },
                         new { CategoryId = 4, Active = true, CategoryName = "Running", Description = "Shoes for runner" }
                     );
-                });
-
-            modelBuilder.Entity("SneakerSeeker3.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
-                    b.Property<DateTime>("DateEntered");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<string>("PostalCode");
-
-                    b.Property<string>("State");
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.ItemColor", b =>
@@ -338,7 +314,7 @@ namespace SneakerSeeker3.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<string>("CustomerId");
 
                     b.Property<DateTime>("OrderDate");
 
@@ -381,14 +357,14 @@ namespace SneakerSeeker3.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CustomerId");
+                    b.Property<string>("CustId");
 
                     b.Property<string>("PaymentType")
                         .IsRequired();
 
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("CustomerId");
+                    b.HasIndex("CustId");
 
                     b.ToTable("Payment");
                 });
@@ -457,6 +433,19 @@ namespace SneakerSeeker3.Data.Migrations
                     );
                 });
 
+            modelBuilder.Entity("SneakerSeeker3.Models.Customer", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.ToTable("Customer");
+
+                    b.HasDiscriminator().HasValue("Customer");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -506,7 +495,7 @@ namespace SneakerSeeker3.Data.Migrations
                 {
                     b.HasOne("SneakerSeeker3.Models.Customer", "Cust")
                         .WithMany()
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustId");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.CartItem", b =>
@@ -554,7 +543,7 @@ namespace SneakerSeeker3.Data.Migrations
                 {
                     b.HasOne("SneakerSeeker3.Models.Customer", "Cust")
                         .WithMany("Payment")
-                        .HasForeignKey("CustomerId");
+                        .HasForeignKey("CustId");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Product", b =>
