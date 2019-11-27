@@ -39,8 +39,17 @@ namespace SneakerSeeker3.Areas.Identity.Pages.Account.Manage
         public InputModel Input { get; set; }
 
         public class InputModel
+			//Add first name and last name fields into edit profile
         {
-            [Required]
+			[Required]
+			[Display(Name = "First Name")]
+			public string FirstName { get; set; }
+
+			[Required]
+			[Display(Name = "Last Name")]
+			public string LastName { get; set; }
+
+			[Required]
             [EmailAddress]
             public string Email { get; set; }
 
@@ -56,8 +65,7 @@ namespace SneakerSeeker3.Areas.Identity.Pages.Account.Manage
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
-
-            var userName = await _userManager.GetUserNameAsync(user);
+			var userName = await _userManager.GetUserNameAsync(user);
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
@@ -65,6 +73,9 @@ namespace SneakerSeeker3.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
+				//Get user's curent first name and last name
+				FirstName = user.FirstName,
+				LastName = user.LastName,
                 Email = email,
                 PhoneNumber = phoneNumber
             };
@@ -87,7 +98,18 @@ namespace SneakerSeeker3.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            var email = await _userManager.GetEmailAsync(user);
+			//Update first name and last name
+			if (Input.FirstName != user.FirstName)
+			{
+				user.FirstName = Input.FirstName;
+			}
+
+			if (Input.LastName != user.LastName)
+			{
+				user.LastName = Input.LastName;
+			}
+
+			var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {
                 var setEmailResult = await _userManager.SetEmailAsync(user, Input.Email);
