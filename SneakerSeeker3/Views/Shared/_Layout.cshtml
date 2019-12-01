@@ -4,13 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@ViewData["Title"] - SneakerSeeker3</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="icon" href="img/core-img/favicon.ico">
+
+        <!-- Core Style CSS -->
+        <link rel="stylesheet" href="~/css/core-style.css">
+        <link rel="stylesheet" href="~/style.css">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -19,45 +26,44 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <style type="text/css">
-        #nav
-        {
+        #nav {
             width: 500px;
             margin: auto;
         }
-        #nav ul
-        {
-            padding: 0;
-            list-style: none;
-        }
-        #nav ul li
-        {
-            float:left;
-            text-align:center;
-            width:120px;
-            margin: 1px;
-        }
-        #nav ul li a
-        {
-            color: #808080;
-            text-decoration: none;
-            font-family: Calibri;
-            background: #00ffff;
-            display:block;
-            padding:10px;
-        }
-        #nav ul li a:hover
-        {
-            background: #00ff90;
-            color: #000000;
-        }
-        #nav ul li ul
-        {
-            display:none;
-        }
-        #nav ul li:hover > ul
-        {
-            display:block;
-        }
+
+            #nav ul {
+                padding: 0;
+                list-style: none;
+            }
+
+                #nav ul li {
+                    float: left;
+                    text-align: center;
+                    width: 120px;
+                    margin: 1px;
+                }
+
+                    #nav ul li a {
+                        color: #808080;
+                        text-decoration: none;
+                        font-family: Calibri;
+                        background: #00ffff;
+                        display: block;
+                        padding: 10px;
+                    }
+
+                        #nav ul li a:hover {
+                            background: #00ff90;
+                            color: #000000;
+                        }
+
+                    #nav ul li ul {
+                        display: none;
+                    }
+
+                    #nav ul li:hover > ul {
+                        display: block;
+                    }
     </style>
 </head>
 <body>
