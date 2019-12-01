@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,8 @@ using SneakerSeeker3.Models;
 
 namespace SneakerSeeker3.Controllers
 {
-    public class ItemColorsManagerController : Controller
+	[Authorize(Roles = "Role1")]
+	public class ItemColorsManagerController : Controller
     {
         private readonly ApplicationDbContext _context;
 

@@ -1,0 +1,23 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<StripeSample.Data.StripeSetting> Stripe;
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<div class="text-center">
+	<form asp-action="Charge" asp-controller="Checkout" method="POST">
+		<article>
+			<label>Amount: $5.00</label>
+		</article>
+		<script src="//checkout.stripe.com/v2/checkout.js"
+				class="stripe-button"
+				data-key="pk_test_hXvGHIXajNAQStuO3ssduUBZ00ij3MQvdV"
+				data-name="Sneaker Seeker"
+				data-locale="auto"
+				data-description="Sample Charge"></script>
+	</form>
+</div>
+

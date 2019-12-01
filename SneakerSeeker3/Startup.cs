@@ -13,6 +13,8 @@ using SneakerSeeker3.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SneakerSeeker3.Models;
+using Stripe;
+using StripeSample.Data;
 //using Stripe;
 
 namespace SneakerSeeker3
@@ -45,13 +47,14 @@ namespace SneakerSeeker3
 				options => options.Stores.MaxLengthForKeys = 128).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-        }
+			services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
+  }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		[Obsolete]
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context, RoleManager<StoreRole> roleManager, UserManager<SneakerSeekerUser> userManager)
         {
-			//StripeConfiguration.SetApiKey(Configuration.GetSection("Stripe")["SecretKey"]);
+			StripeConfiguration.SetApiKey(Configuration["Stripe:TestSecretKey"]);
 			if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
