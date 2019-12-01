@@ -18,6 +18,47 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <style type="text/css">
+        #nav
+        {
+            width: 500px;
+            margin: auto;
+        }
+        #nav ul
+        {
+            padding: 0;
+            list-style: none;
+        }
+        #nav ul li
+        {
+            float:left;
+            text-align:center;
+            width:120px;
+            margin: 1px;
+        }
+        #nav ul li a
+        {
+            color: #808080;
+            text-decoration: none;
+            font-family: Calibri;
+            background: #00ffff;
+            display:block;
+            padding:10px;
+        }
+        #nav ul li a:hover
+        {
+            background: #00ff90;
+            color: #000000;
+        }
+        #nav ul li ul
+        {
+            display:none;
+        }
+        #nav ul li:hover > ul
+        {
+            display:block;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,54 +73,70 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">SneakerSeeker3</a>
             </div>
             <div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-					<li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-					<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-					@if (SignInManager.IsSignedIn(User))
-					{
-						<li><a asp-area="" asp-controller="Shop" asp-action="Index">View Shoes</a></li>
-						<li class="dropdown">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Manager <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a asp-area="" asp-controller="ProductsManager" asp-action="Create">Add</a></li>
-								<li><a asp-area="" asp-controller="ProductsManager" asp-action="Index">View All</a></li>
-							</ul>
-						</li>
+                <ul class="nav navbar-nav" id="nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Men <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Sneakers</a></li>
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Running</a></li>
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Casual</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Women <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Sneakers</a></li>
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Running</a></li>
+                            <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Casual</a></li>
+                        </ul>
+                    </li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-area="" asp-controller="Shop" asp-action="Index">View Shoes</a></li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Manager <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="ProductsManager" asp-action="Create">Add</a></li>
+                                <li><a asp-area="" asp-controller="ProductsManager" asp-action="Index">View All</a></li>
+                            </ul>
+                        </li>
 
-						<li class="dropdown">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">Category Manager <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Create">Add</a></li>
-								<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">View All</a></li>
-							</ul>
-						</li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">Category Manager <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Create">Add</a></li>
+                                <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">View All</a></li>
+                            </ul>
+                        </li>
 
-						<li class="dropdown">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">Brand Manager <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a asp-area="" asp-controller="SuppliersManager" asp-action="Create">Add</a></li>
-								<li><a asp-area="" asp-controller="SuppliersManager" asp-action="Index">View All</a></li>
-							</ul>
-						</li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">Brand Manager <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="SuppliersManager" asp-action="Create">Add</a></li>
+                                <li><a asp-area="" asp-controller="SuppliersManager" asp-action="Index">View All</a></li>
+                            </ul>
+                        </li>
 
-						<li class="dropdown">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Size Manager <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a asp-area="" asp-controller="ItemSizesManager" asp-action="Create">Add</a></li>
-								<li><a asp-area="" asp-controller="ItemSizesManager" asp-action="Index">View All</a></li>
-							</ul>
-						</li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Size Manager <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="ItemSizesManager" asp-action="Create">Add</a></li>
+                                <li><a asp-area="" asp-controller="ItemSizesManager" asp-action="Index">View All</a></li>
+                            </ul>
+                        </li>
 
-						<li class="dropdown">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Color Manager <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Create">Add</a></li>
-								<li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">View All</a></li>
-							</ul>
-						</li>
-					}
-				</ul>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" href="#" class="dropdown-toggle">Product Color Manager <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Create">Add</a></li>
+                                <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">View All</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
                 <partial name="_LoginPartial" />
                 <form class="form-inline" data-ajax="true" data-ajax-method="post" data-ajax-mode="replace" data-ajax-update="#body" asp-controller="search" asp-action="Index">
                     <input name="query" id="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
