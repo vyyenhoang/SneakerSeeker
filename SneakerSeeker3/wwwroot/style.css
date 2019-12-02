@@ -12,4 +12,12 @@
     ##### - PLACE YOUR CUSTOM CSS HERE - #####
     --------------------------------------- */
 
-    
+.amado-btn {
+    background-color: #DB4455;
+}
+
+
+
+.single-products-catagory .hover-content .line {
+    background-color: #DB4455;
+}
