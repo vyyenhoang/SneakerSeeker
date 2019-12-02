@@ -7,10 +7,10 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="amado-btn-group mt-30 mb-100">
         <ul class="amado-btn-group mt-30 mb-100">
-            <li>
+            <li class="nav-item mr-auto">
                 <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
-            <li>
+            <li class="nav-item mr-auto">
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
             </li>
         </ul>
@@ -21,6 +21,5 @@ else
     <div class="amado-btn-group mt-30 mb-100">
         <a class="btn amado-btn mb-15" asp-area="Identity" asp-page="/Account/LogIn">Sign In</a>
         <a class="btn amado-btn active" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
-
     </div>
 }
