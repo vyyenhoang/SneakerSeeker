@@ -3,7 +3,7 @@
 @inject SignInManager<SneakerSeekerUser> SignInManager
 @inject UserManager<SneakerSeekerUser> UserManager
 
-@if (SignInManager.IsSignedIn(User)) 
+@if (SignInManager.IsSignedIn(User))
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="amado-btn-group mt-30 mb-100">
         <ul class="amado-btn-group mt-30 mb-100">
@@ -19,8 +19,8 @@
 else
 {
     <div class="amado-btn-group mt-30 mb-100">
-        <a class="btn amado-btn mb-15" asp-area="Identity" asp-page="/Account/Log In">Sign In</a>
-        <a class="btn amado-btn mb-15" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
+        <a class="btn amado-btn mb-15" asp-area="Identity" asp-page="/Account/LogIn">Sign In</a>
+        <a class="btn amado-btn active" asp-area="Identity" asp-page="/Account/Register">Sign Up</a>
 
     </div>
 }
