@@ -126,32 +126,39 @@
 			</div>
 			<!-- Amado Nav -->
 			<nav class="amado-nav">
-				<ul>
-					@*<li class="active"><a href="index.html">Home</a></li>*@
+                <ul>
+                    @*<li class="active"><a href="index.html">Home</a></li>*@
 
-					@*<li><a asp-area="" asp-controller="Shop" asp-action="Index">View Shoes</a></li>*@
-					<li class="dropdown">
-						<a data-toggle="dropdown" href="#" class="dropdown-toggle">Men <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Sneakers</a></li>
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Running</a></li>
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Casual</a></li>
-						</ul>
-					</li>
-
-
-
-					<li class="dropdown">
-						<a data-toggle="dropdown" href="#" class="dropdown-toggle">Women <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Sneakers</a></li>
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Running</a></li>
-							<li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Casual</a></li>
-						</ul>
-					</li>
+                    @*<li><a asp-area="" asp-controller="Shop" asp-action="Index">View Shoes</a></li>*@
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Men <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Sneakers</a></li>
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Running</a></li>
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Casual</a></li>
+                        </ul>
+                    </li>
 
 
-				</ul>
+
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Women <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Sneakers</a></li>
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Running</a></li>
+                            <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Casual</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a asp-area="" asp-controller="SuppliersManager" asp-action="Index">Brands</a></li>
+                        
+                    </li>
+
+
+
+                </ul>
 			</nav>
 
 			<partial name="_LoginPartial" />

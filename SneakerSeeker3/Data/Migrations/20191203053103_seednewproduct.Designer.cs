@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SneakerSeeker3.Data;
 
 namespace SneakerSeeker3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20191203053103_seednewproduct")]
+    partial class seednewproduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -351,10 +353,10 @@ namespace SneakerSeeker3.Data.Migrations
                         new { ProductId = 8, CategoryId = 5, ItemColorId = 5, ProductDescription = "One of the most popular Yeezy shoes ever made", ProductName = "Adidas Yeezy Boost 350 V2 shoes - women", ProductURL = "https://shop.r10s.jp/noel-ange/cabinet/shoes/adidas2/adi-d96635-al-a.jpg", SKU = "0008A", SupplierId = 2, UnitPrice = 200m },
                         new { ProductId = 9, CategoryId = 5, ItemColorId = 1, ProductDescription = "These shoes have a lightweight textile", ProductName = "Adidas LITE RACER RBN running shoes - Men", ProductURL = "https://assets.adidas.com/images/w_600,f_auto,q_auto:sensitive,fl_lossy/04fd20874e024a519fe3a99901315e1a_9366/Lite_Racer_RBN_Shoes_Black_F36783_01_standard.jpg", SKU = "0009A", SupplierId = 2, UnitPrice = 150m },
                         new { ProductId = 10, CategoryId = 3, ItemColorId = 4, ProductDescription = "This is the most faithful reproduction of the shell-toe shoes", ProductName = "Adidas originals superstar shoes - women", ProductURL = "https://images.bloomingdalesassets.com/is/image/BLM/products/7/optimized/9942107_fpx.tif?op_sharpen=1&wid=700&fit=fit,1&$filtersm$", SKU = "0010A", SupplierId = 2, UnitPrice = 200m },
-                        new { ProductId = 11, CategoryId = 2, ItemColorId = 4, ProductDescription = "FILA’s most popular women’s silhouette", ProductName = "Fila Disruptor II Premium - Women", ProductURL = "https://scene7.zumiez.com/is/image/zumiez/pdp_hero/FILA-Disruptor-Multicolor-%26-White-Shoes-_311646-front-US.jpg", SKU = "0011A", SupplierId = 4, UnitPrice = 200m },
+                        new { ProductId = 11, CategoryId = 2, ItemColorId = 4, ProductDescription = "FILA’s most popular women’s silhouette", ProductName = "Fila Disruptor II Premium - Women", ProductURL = "https://images.pexels.com/photos/2692460/pexels-photo-2692460.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", SKU = "0011A", SupplierId = 4, UnitPrice = 200m },
                         new { ProductId = 12, CategoryId = 2, ItemColorId = 6, ProductDescription = "90's are back. This shoe has got a narrow fit", ProductName = "Fila DISRUPTOR M LOW - women", ProductURL = "https://photos.queens.cz/queens/2019-03/large/fila-disruptor-m-low-wmn-89669_1.jpg", SKU = "0012A", SupplierId = 4, UnitPrice = 200m },
                         new { ProductId = 13, CategoryId = 1, ItemColorId = 7, ProductDescription = "The Era, Vans classic low top lace-up skate shoe", ProductName = "Vans Era - Men", ProductURL = "https://imagescdn.simons.ca/images/8728-319317-60-A1_2/era-bright-red-sneakers-men.jpg?__=3", SKU = "0013A", SupplierId = 5, UnitPrice = 150m },
-                        new { ProductId = 14, CategoryId = 1, ItemColorId = 1, ProductDescription = "The Authentic, Vans original and now iconic style, is a simple low top", ProductName = "Vans Authentic - Women", ProductURL = "https://scene7.zumiez.com/is/image/zumiez/pdp_hero/FILA-Disruptor-II-3D-Embroidery-White-Shoes-_323532-front-US.jpg", SKU = "0014A", SupplierId = 5, UnitPrice = 200m },
+                        new { ProductId = 14, CategoryId = 1, ItemColorId = 1, ProductDescription = "The Authentic, Vans original and now iconic style, is a simple low top", ProductName = "Vans Authentic - Women", ProductURL = "https://images.pexels.com/photos/1503009/pexels-photo-1503009.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", SKU = "0014A", SupplierId = 5, UnitPrice = 200m },
                         new { ProductId = 15, CategoryId = 2, ItemColorId = 8, ProductDescription = "This is one of three regional exclusive colorways that released in March 2019", ProductName = "Adidas Yeezy Boost 350 V2 - women", ProductURL = "https://www.biorley.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/j/j/jj657.jpg", SKU = "0015A", SupplierId = 2, UnitPrice = 150m },
                         new { ProductId = 16, CategoryId = 5, ItemColorId = 2, ProductDescription = "The first sneaker in the EQT line designed with the baller in mind", ProductName = "Adidas EQT Basketball ADV Unisex Running Soes - Men", ProductURL = "https://media.endclothing.com/media/catalog/product/2/3/23-03-2018_adidas_eqtbaskadvw_ashblue_white_ac7353_mg_1.jpg", SKU = "0016A", SupplierId = 2, UnitPrice = 200m },
                         new { ProductId = 17, CategoryId = 5, ItemColorId = 4, ProductDescription = "The Jordan Retro 13 is a retro version of the shoe MJ wore as he captured his sixth championship", ProductName = "Nike Jordan 13 Retro Alternate - Men", ProductURL = "https://www.snkronline.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/4/1/414571-103_1.jpg", SKU = "0017A", SupplierId = 1, UnitPrice = 150m },
