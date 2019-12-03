@@ -467,7 +467,7 @@ img {
     @include trans-duration(500ms);
     @include flex-wrap(wrap);
     @media #{$breakpoint-xs} {
-        margin-top: 70px;
+       margin-top: 70px;
         z-index: 100;
     }
     .header-area {
