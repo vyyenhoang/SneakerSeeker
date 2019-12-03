@@ -70,7 +70,10 @@
                             <a href="@Url.Action("Details", "Shop", new { Id = product.ProductId })" role="button" class="btn btn-success">Details</a>
                         </div>
                     </div>
+                    <div class="AddToCart" id="AddToCart-@product.ProductId">
                 </div>
+                <a class="btn btn-secondary AddToCartBtn" id="@product.ProductId">Add to Cart</a>
+            </div>
             </div>
         }
     </div><!-- End Thumbnails -->

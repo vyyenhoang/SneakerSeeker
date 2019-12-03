@@ -83,5 +83,7 @@ namespace SneakerSeeker3.Data
 			new Models.ItemSize() { ItemSizeId = 6, Size = "10" });
 
 		}
+
+		public DbSet<SneakerSeeker3.Models.Cart> Cart { get; set; }
 	}
 }

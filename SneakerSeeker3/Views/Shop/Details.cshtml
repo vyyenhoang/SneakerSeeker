@@ -60,6 +60,10 @@
         </dd>
     </dl>
 </div>
-<div>|
+<div>
+    |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<div class="AddToCart" id="AddToCart-@Model.ProductId"></div>
+<a class="btn btn-secondary AddToCartBtn" id="@Model.ProductId">Add to Cart</a>
