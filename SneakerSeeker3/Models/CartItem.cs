@@ -21,5 +21,7 @@ namespace SneakerSeeker3.Models
             public virtual Product Pro { get; set; }
 
             public virtual int Qty { get; set; }
-        }
+
+
+	}
     }

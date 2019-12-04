@@ -24,23 +24,23 @@ namespace SneakerSeeker3.Controllers
 		{
 			String userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-			var shoeStoreUser = _context.Users.Include(User => User.Cart).Include(User => User.Cart.CartItems)
+			var sneakerSeekerUser = _context.Users.Include(user => user.Cart).Include(user => user.Cart.CartItems)
 				.Where(x => x.Id == userId).SingleOrDefault();
 
-			if (shoeStoreUser.Cart == null)
+			if (sneakerSeekerUser.Cart == null)
 			{
-				shoeStoreUser.Cart = new Cart()
+				sneakerSeekerUser.Cart = new Cart()
 				{
 					CartItems = new List<CartItem>()
 				};
-				_context.Cart.Add(shoeStoreUser.Cart);
-				_context.Update(shoeStoreUser);
+				_context.Cart.Add(sneakerSeekerUser.Cart);
+				_context.Update(sneakerSeekerUser);
 
 				_context.SaveChanges();
-				_context.Update(shoeStoreUser);
+				_context.Update(sneakerSeekerUser);
 			}
 
-			List<CartItem> items = shoeStoreUser.Cart.CartItems;
+			List<CartItem> items = sneakerSeekerUser.Cart.CartItems;
 			if (items.Exists(x => x.ProductId == Id))
 			{
 				items.Where(x => x.ProductId == Id).SingleOrDefault().Qty++;
@@ -50,13 +50,13 @@ namespace SneakerSeeker3.Controllers
 				CartItem ci = new CartItem()
 				{
 					ProductId = Id,
-					CartId = shoeStoreUser.Cart.Id,
+					CartId = sneakerSeekerUser.Cart.Id,
 					Qty = 1
 				};
 				//_context.Add(ci);
 				items.Add(ci);
 			}
-			_context.Update(shoeStoreUser.Cart);
+			_context.Update(sneakerSeekerUser.Cart);
 			_context.SaveChanges();
 			return PartialView();
 		}

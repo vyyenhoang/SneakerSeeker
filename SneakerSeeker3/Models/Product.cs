@@ -62,7 +62,7 @@ namespace SneakerSeeker3.Models
 
         public virtual List<ItemReview> ItemReviews { get; set; }
 
-
+		public virtual List<CartItem> ShoppingCartItems { get; set; }
 
     }
 }
