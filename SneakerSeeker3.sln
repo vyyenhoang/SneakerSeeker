@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SneakerSeeker3", "SneakerSeeker3\SneakerSeeker3.csproj", "{668359E1-DA71-4552-BFF2-82B0107C22AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SneakerSeeker3", "SneakerSeeker3\SneakerSeeker3.csproj", "{668359E1-DA71-4552-BFF2-82B0107C22AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SneakerSeekerTest", "SneakerSeekerTest\SneakerSeekerTest.csproj", "{BBCFB14D-25B8-4548-A12C-630F58E4647D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{668359E1-DA71-4552-BFF2-82B0107C22AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{668359E1-DA71-4552-BFF2-82B0107C22AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{668359E1-DA71-4552-BFF2-82B0107C22AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBCFB14D-25B8-4548-A12C-630F58E4647D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBCFB14D-25B8-4548-A12C-630F58E4647D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBCFB14D-25B8-4548-A12C-630F58E4647D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBCFB14D-25B8-4548-A12C-630F58E4647D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
