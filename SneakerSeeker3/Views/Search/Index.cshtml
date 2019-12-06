@@ -1,31 +1,34 @@
 ﻿@model IEnumerable<SneakerSeeker3.Models.Product>
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "ProductPage";
 }
 
 @{
     Layout = "_Layout";
 }
 
-<!-- Product Details Area Start -->
-<div class="single-product-area section-padding-100 clearfix">
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mt-50">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Furniture</a></li>
-                        <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
-                    </ol>
-                </nav>
+
+@foreach (var product in Model)
+{
+    <!-- Product Details Area Start -->
+    <div class="single-product-area section-padding-100 clearfix">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mt-50">
+                            <li class="breadcrumb-item"><a href="#">Home Here</a></li>
+                            <li class="breadcrumb-item"><a href="#">Shop Here</a></li>
+                            <li class="breadcrumb-item"><a href="#">Category Here</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"> @(product.ProductName)  </li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            @foreach (var product in Model)
-            {
+            <div class="row">
+
                 <div class="col-12 col-lg-7">
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
@@ -105,7 +108,12 @@
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
                                 </div>
                             </div>
-                            <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
+
+
+
+                            <div class="AddToCart" id="AddToCart-@product.ProductId"></div>
+                            <a class="btn amado-btn" id="@product.ProductId">Add to Cart</a>
+
                         </form>
 
 
@@ -114,10 +122,12 @@
                 </div>
 
 
-            }
 
+
+            </div>
         </div>
-</div>
     </div>
-        <!-- Product Details Area End -->
-        <!-- ##### Main Content Wrapper End ##### -->
+
+}
+<!-- Product Details Area End -->
+<!-- ##### Main Content Wrapper End ##### -->

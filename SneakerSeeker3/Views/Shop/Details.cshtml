@@ -1,69 +1,130 @@
 ﻿@model SneakerSeeker3.Models.Product
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "ProductPage";
+
+    Layout = "_Layout";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SKU)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SKU)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductURL)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ProductURL)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Cat)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Cat.CategoryName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Sup)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Sup.CompanyName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.color)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.color.Color)
-        </dd>
-    </dl>
-</div>
-<div>
-    |
-    <a asp-action="Index">Back to List</a>
+
+<!-- Product Details Area Start -->
+<div class="single-product-area section-padding-100 clearfix">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mt-50">
+                        <li class="breadcrumb-item"><a href="#">Home Here</a></li>
+                        <li class="breadcrumb-item"><a href="#">Shop Here</a></li>
+                        <li class="breadcrumb-item"><a href="#">Category Here</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">   @Html.DisplayFor(model => model.ProductName) </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-12 col-lg-7">
+                <div class="single_product_thumb">
+                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url( @Html.DisplayFor(model => model.ProductURL);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url( @Html.DisplayFor(model => model.ProductURL);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url( @Html.DisplayFor(model => model.ProductURL);">
+                            </li>
+                            <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url( @Html.DisplayFor(model => model.ProductURL);">
+                            </li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <a class="gallery_img" href=" @Html.DisplayFor(model => model.ProductURL)">
+                                    <img class="d-block w-100" src=" @Html.DisplayFor(model => model.ProductURL)" alt="First slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href=" @Html.DisplayFor(model => model.ProductURL)">
+                                    <img class="d-block w-100" src=" @Html.DisplayFor(model => model.ProductURL)" alt="Second slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href=" @Html.DisplayFor(model => model.ProductURL)">
+                                    <img class="d-block w-100" src=" @Html.DisplayFor(model => model.ProductURL)" alt="Third slide">
+                                </a>
+                            </div>
+                            <div class="carousel-item">
+                                <a class="gallery_img" href=" @Html.DisplayFor(model => model.ProductURL)">
+                                    <img class="d-block w-100" src=" @Html.DisplayFor(model => model.ProductURL)" alt="Fourth slide">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-5">
+                <div class="single_product_desc">
+                    <!-- Product Meta Data -->
+                    <div class="product-meta-data">
+                        <div class="line"></div>
+                        <p class="product-price">CAD @Html.DisplayFor(model => model.UnitPrice)</p>
+                        <a href="#">
+                            <h4> @Html.DisplayFor(model => model.ProductName)</h4>
+                        </a>
+
+
+                        <!-- Ratings & Review -->
+                        <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="review">
+                                <a href="#">Write A Review</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="short_overview my-5">
+                        <p> @Html.DisplayFor(model => model.ProductDescription)</p>
+                    </div>
+                    <!-- Add to Cart Form -->
+                    <form class="cart clearfix" method="post">
+                        <div class="cart-btn d-flex mb-50">
+                            <p>Qty</p>
+                            <div class="quantity">
+                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) & amp;& amp; qty & gt; 1) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
+                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="AddToCart" id="AddToCart-@(Model.ProductId)"></div>
+                            <a class="btn amado-btn" id="@(Model.ProductId)">Add to Cart</a>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
 </div>
 
-<div class="AddToCart" id="AddToCart-@Model.ProductId"></div>
-<a class="btn btn-secondary AddToCartBtn" id="@Model.ProductId">Add to Cart</a>
+
+<!-- Product Details Area End -->
+<!-- ##### Main Content Wrapper End ##### -->
