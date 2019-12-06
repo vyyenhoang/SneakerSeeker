@@ -20,10 +20,23 @@ namespace SneakerSeeker3.Controllers
 		}
 
 		// GET: Shop
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(int? id)
 		{
-			var applicationDbContext = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color);
-			return View(await applicationDbContext.ToListAsync());
+
+            // Here id value come from clients brand page. when any particular brand click, id is not null, then condition where work here.
+            // if only shop page load without id then all the products will show in the shop page. 
+            if(id != null)
+            {
+                var applicationDbContext = _context.Product.Where(s=>s.SupplierId == id).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color);
+                return View(await applicationDbContext.ToListAsync());
+            }
+            else
+            {
+                var applicationDbContext = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color);
+                return View(await applicationDbContext.ToListAsync());
+
+            }
+		
 		}
 
 		// GET: Shop/Details/5
