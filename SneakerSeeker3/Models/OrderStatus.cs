@@ -20,7 +20,9 @@ namespace SneakerSeeker3.Models
         [Key]
         public virtual int StatusId { get; set; } //Primary Key
 
-        [Required]
+        [Required(ErrorMessage = "Please enter Description for Status")]
+        [Display(Name = "Status")]
+        [StringLength(100, ErrorMessage = "Status could not be greater than 100 characters")]
         public virtual String Status { get; set; }
 
         public virtual List<Order> Ord { get; set; }

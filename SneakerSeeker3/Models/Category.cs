@@ -22,11 +22,16 @@ namespace SneakerSeeker3.Models
     public virtual int CategoryId { get; set; } //Primary Key
 
 
-    [Required]
+
+
+    [Required(ErrorMessage = "Please enter Category Name")]
     [Display(Name = "Category Name")]
+    [StringLength(100, ErrorMessage = "Category Name could not be greater than 100 characters")]
     public virtual String CategoryName { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "Please enter Description for Category")]
+    [Display(Name = "Description")]
+    [StringLength(100, ErrorMessage = "Description could not be greater than 100 characters")]
     public virtual String Description { get; set; }
 
     public virtual String ImageURL { get; set; }

@@ -21,7 +21,9 @@ namespace SneakerSeeker3.Models
         [Key]
         public virtual int PaymentId { get; set; } //Primary Key
 
-        [Required]
+        [Required(ErrorMessage = "Please enter Payment Type")]
+        [Display(Name = "Payment Type")]
+        [StringLength(50, ErrorMessage = "Status could not be greater than 50 characters")]
         public virtual String PaymentType { get; set; }
 
        

@@ -11,7 +11,9 @@ namespace SneakerSeeker3.Models
         [Key]
         public virtual int ItemColorId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter Color")]
+        [Display(Name = "Color")]
+        [StringLength(100, ErrorMessage = "Color could not be greater than 100 characters")]
         public virtual String Color { get; set; }
 
         public virtual List<Product> Products { get; set; }

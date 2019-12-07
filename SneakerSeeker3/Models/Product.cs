@@ -35,12 +35,18 @@ namespace SneakerSeeker3.Models
         public virtual String SKU { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "Please enter Product Name")]
+        [Display(Name = "Product Name")]
+        [StringLength(50, ErrorMessage = "Status could not be greater than 50 characters")]
         public virtual String ProductName { get; set; }
 
+        [Required(ErrorMessage = "Please enter Product Description")]
+        [Display(Name = "Product Description")]
+        [StringLength(100, ErrorMessage = "Status could not be greater than 100 characters")]
         public virtual String ProductDescription { get; set; }
-        
 
+        [Required(ErrorMessage = "Please enter Unit Price for this product")]
+        [Display(Name = "Price")]
         [DataType(DataType.Currency)]
         public virtual Decimal UnitPrice { get; set; }
         
