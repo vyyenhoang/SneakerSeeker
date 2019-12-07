@@ -95,6 +95,12 @@
                     <div class="short_overview my-5">
                         <p> @Html.DisplayFor(model => model.ProductDescription)</p>
                     </div>
+
+                    @if(TempData["product"] != null)
+                    {
+                        @TempData["product"].ToString();
+                    }
+
                     <!-- Add to Cart Form -->
                     <form class="cart clearfix" method="post">
                         <div class="cart-btn d-flex mb-50">
@@ -106,11 +112,11 @@
                             </div>
                         </div>
 
-
+                        <a class="aa-add-to-cart-btn" href="@Url.Action("AddToCart", "Product", new { id=Model.ProductId})">Add To Cart</a>
 
                         <div class="AddToCart" id="AddToCart-@(Model.ProductId)"></div>
-                            <a class="btn amado-btn" id="@(Model.ProductId)">Add to Cart</a>
-
+                        @*<a class="btn amado-btn" id="@(Model.ProductId)">Add to Cartss</a>*@
+                        <a class="btn amado-btn" href="@Url.Action("AddToCart", "Shop", new { id=Model.ProductId})">Add To Cart</a>
                     </form>
 
 

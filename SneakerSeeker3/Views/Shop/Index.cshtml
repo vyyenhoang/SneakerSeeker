@@ -1,4 +1,10 @@
-﻿@model IEnumerable<SneakerSeeker3.Models.Product>
+﻿@*@model IEnumerable<SneakerSeeker3.Models.Product>*@
+@model ReflectionIT.Mvc.Paging.PagingList<SneakerSeeker3.Models.Product>
+@using ReflectionIT.Mvc.Paging
+@addTagHelper *,ReflectionIT.Mvc.Paging
+
+
+
 @{
     ViewData["Title"] = "Products";
 }
@@ -94,8 +100,8 @@
         <div class="widget-desc">
             @using (Html.BeginForm("Index", "Shop", FormMethod.Get))
             {
-                <input type="range" min="0" max="50" onchange="updateMinInput(this.value);"> <br />
-                <input type="range" min="0" max="50" onchange="updateMaxInput(this.value);">
+                <input type="range" min="0" max="5000" onchange="updateMinInput(this.value);"> <br />
+                <input type="range" min="0" max="5000" onchange="updateMaxInput(this.value);">
                 <br />
                 <input type="number" name="minPrice" id="minValue" min="0" maxlength="6" max="999999" value="00" size="6" readonly>
                 <input type="number" name="maxPrice" id="maxValue" min="0" maxlength="6" max="999999" value="00" size="6" readonly> <br /><br />
@@ -118,7 +124,7 @@
                 <div class="product-topbar d-xl-flex align-items-end justify-content-between">
                     <!-- Total Products -->
                     <div class="total-products">
-                        <p>Showing 1-8 0f 25</p>
+         
                         <div class="view d-flex">
                             <a href="#"><i class="fa fa-th-large" aria-hidden="true"></i></a>
                             <a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
@@ -156,7 +162,7 @@
                         <a href="@Url.Action("Details", "Shop", new { Id = product.ProductId })">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img src="@(product.ProductURL)" alt="" class="img-rounded" style="width:500px; height:400px;" >
+                                <img src="@(product.ProductURL)" alt="" class="img-rounded" style="width:500px; height:400px;">
                                 @*<img class="hover-img" src="@(product.ProductURL)" alt="">*@
                             </div>
                         </a>
@@ -172,21 +178,21 @@
                                 </div>
                             </div>
 
-                                <!-- Ratings & Cart -->
-                                <div class="ratings-cart text-right">
-                                    <div class="ratings">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="cart">
-                                        <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-                                    </div>
+                            <!-- Ratings & Cart -->
+                            <div class="ratings-cart text-right">
+                                <div class="ratings">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="cart">
+                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             }
         </div>
@@ -196,14 +202,11 @@
 
         <div class="row">
             <div class="col-12">
+
+
                 <!-- Pagination -->
                 <nav aria-label="navigation">
-                    <ul class="pagination justify-content-end mt-50">
-                        <li class="page-item active"><a class="page-link" href="#">01.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">02.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">03.</a></li>
-                        <li class="page-item"><a class="page-link" href="#">04.</a></li>
-                    </ul>
+                    <vc:pager paging-list="@Model"> </vc:pager>
                 </nav>
             </div>
         </div>
@@ -215,10 +218,10 @@
 <script type="text/javascript">
     function updateMinInput(val) {
         document.getElementById('minValue').value = 00;
-        document.getElementById('minValue').value = val * 10;
+        document.getElementById('minValue').value = val * 1;
     }
     function updateMaxInput(val) {
         document.getElementById('maxValue').value = 00;
-        document.getElementById('maxValue').value = val * 100;
+        document.getElementById('maxValue').value = val * 1;
     }
 </script>

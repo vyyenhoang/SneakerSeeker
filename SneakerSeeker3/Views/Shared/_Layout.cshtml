@@ -167,7 +167,15 @@
 
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a asp-area="" asp-controller="Cart" asp-action="" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+                <a asp-area="" asp-controller="Cart" asp-action="" class="cart-nav">
+                    <img src="img/core-img/cart.png" alt=""> Cart <span>
+
+                        @if (TempData["product"] != null)
+                        {@TempData["product"]}
+
+                    </span>
+
+                </a>
                 @*<a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>*@
                 <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
             </div>
@@ -181,7 +189,7 @@
         </header>
 
 
-       
+
 
 
         <partial name="_CookieConsentPartial" />
@@ -191,31 +199,31 @@
         <hr />
 
     </div>
-	<footer style="text-align: center;">
-		<p>&copy; 2019 - SneakerSeeker3</p>
-	</footer>
+    <footer style="text-align: center;">
+        <p>&copy; 2019 - SneakerSeeker3</p>
+    </footer>
 
-	<environment include="Development">
-		<script src="~/lib/jquery/dist/jquery.js"></script>
-		<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-		<script src="~/js/site.js" asp-append-version="true"></script>
-	</environment>
-	<environment exclude="Development">
-		<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-				asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-				asp-fallback-test="window.jQuery"
-				crossorigin="anonymous"
-				integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-		</script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-				asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-				asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-				crossorigin="anonymous"
-				integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
-		</script>
-		<script src="~/js/site.min.js" asp-append-version="true"></script>
-	</environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
 
-	@RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

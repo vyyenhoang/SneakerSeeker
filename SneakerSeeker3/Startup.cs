@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SneakerSeeker3.Models;
 using Stripe;
 using StripeSample.Data;
+using ReflectionIT.Mvc.Paging;
 //using Stripe;
 
 namespace SneakerSeeker3
@@ -53,6 +54,7 @@ namespace SneakerSeeker3
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddPaging();
 			services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
   }
 
