@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SneakerSeeker3.Models;
 using Stripe;
 using StripeSample.Data;
-using ReflectionIT.Mvc.Paging;
+
 //using Stripe;
 
 namespace SneakerSeeker3
@@ -47,14 +47,13 @@ namespace SneakerSeeker3
 			services.AddIdentity<SneakerSeekerUser, StoreRole>(
 				options => options.Stores.MaxLengthForKeys = 128).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
-            services.AddAuthentication().AddGoogle(googleOptions =>
-            {
-                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            });
+            //services.AddAuthentication().AddGoogle(googleOptions =>
+            //{
+            //    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+            //    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddPaging();
 			services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
   }
 
