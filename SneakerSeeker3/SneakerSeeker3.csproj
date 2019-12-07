@@ -18,6 +18,8 @@
     <Compile Remove="Data\Migrations\20191124185554_UpdateCustomerModel.Designer.cs" />
     <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.cs" />
     <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191207165419_AddShoppingCart.cs" />
+    <Compile Remove="Data\Migrations\20191207165419_AddShoppingCart.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
