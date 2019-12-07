@@ -16,6 +16,7 @@
                         @Html.HiddenFor(modelItem => item.SupplierId)
                         <a href="@Url.Action("Index", "Shop", new { id = item.SupplierId})">
                             <img src="@Html.DisplayFor(modelItem =>item.URL)" class="card-img-top" style="height:100px;width:140px;" alt="..." />
+                            <img class="hover-img" src="@(item.SupplierId)" alt="">
                         </a>
                     </div>
                 </div>
