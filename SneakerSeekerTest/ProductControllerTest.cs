@@ -38,7 +38,7 @@ namespace SneakerSeekerTest
 			//Assert
 			var result = Assert.IsType<ViewResult>(r);
 			var model = Assert.IsAssignableFrom<List<Product>>(result.ViewData.Model);
-			//Assert.Equal(1, model.Count());
+			Assert.Equal("Index", result.ContentType);
 		}
 
 
