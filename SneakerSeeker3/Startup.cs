@@ -47,14 +47,16 @@ namespace SneakerSeeker3
 			services.AddIdentity<SneakerSeekerUser, StoreRole>(
 				options => options.Stores.MaxLengthForKeys = 128).AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
-            //services.AddAuthentication().AddGoogle(googleOptions =>
-            //{
-            //    googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
-            //    googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //});
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-			services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+                googleOptions.ClientId = Configuration["Authentication:Google:ClientId"];
+                googleOptions.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            });
+
+            services.Configure<StripeSetting>(Configuration.GetSection("Stripe"));
   }
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
