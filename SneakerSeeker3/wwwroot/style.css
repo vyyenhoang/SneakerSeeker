@@ -104,3 +104,7 @@ body{
 .product-topbar .nice-select .list .option.selected {
     color: #DB4455;
 }
+
+.main-content-wrapper .header-area .nav-close {
+    background-color: #DB4455;
+}
