@@ -50,21 +50,22 @@ namespace SneakerSeeker3.Models
         [DataType(DataType.Currency)]
         public virtual Decimal UnitPrice { get; set; }
         
-        [Display(Name = "Image")]
-        [Required(ErrorMessage = "Please enter Image URL")]
+        [Display(Name = "Product Image")]
         public string ProductURL { get; set; }
 
-        [Required(ErrorMessage = "Please select Category")]
         public virtual int CategoryId { get; set; }
+        [Display(Name = "Category")]
         public virtual Category Cat { get; set; }
 
-        [Required(ErrorMessage = "Please select Supplier")]
         public virtual int SupplierId { get; set; }
+        [Display(Name = "Brand")]
         public virtual Supplier Sup { get; set; }
 
+        [Display(Name = "Size")]
         public virtual ItemSize size { get; set; }
 
         public virtual int ItemColorId { get; set; }
+        [Display(Name = "Color")]
         public virtual ItemColor color { get; set; }
 
         public virtual List<ItemReview> ItemReviews { get; set; }

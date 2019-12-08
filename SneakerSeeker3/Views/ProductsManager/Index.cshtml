@@ -19,22 +19,22 @@
                                     @Html.DisplayNameFor(model => model.SKU)
                                 </th>
                                 <th>
-                                    Product Name
+                                    @Html.DisplayNameFor(model => model.ProductName)
                                 </th>
                                 <th>
-                                    Description
+                                    @Html.DisplayNameFor(model => model.ProductDescription)
                                 </th>
                                 <th>
-                                    Unit Price
-                                </th>
-                                @*<th>
-                                    Image Url
-                                </th>*@
-                                <th>
-                                    Category
+                                    @Html.DisplayNameFor(model => model.UnitPrice)
                                 </th>
                                 <th>
-                                    Supplier
+                                    @Html.DisplayNameFor(model => model.ProductURL)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Cat)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Sup)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.color)
@@ -45,40 +45,41 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SKU)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ProductDescription)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.UnitPrice)
-                                    </td>
-                                    @*<td>
-                                        @Html.DisplayFor(modelItem => item.ProductURL)
-                                    </td>*@
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Cat.CategoryName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Sup.CompanyName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.color.Color)
-                                    </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SKU)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.ProductURL)*@
+                                    <img src="@(item.ProductURL)" alt="">
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cat.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sup.CompanyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.color.Color)
+                                </td>
 
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
                             }
                         </tbody>
                     </table>

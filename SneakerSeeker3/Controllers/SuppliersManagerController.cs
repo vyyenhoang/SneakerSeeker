@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SneakerSeeker3.Data;
 using SneakerSeeker3.Models;
-
+using Microsoft.AspNetCore.Hosting;
 namespace SneakerSeeker3.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class SuppliersManagerController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private IHostingEnvironment hostingEnvironment;
         public SuppliersManagerController(ApplicationDbContext context)
         {
             _context = context;
@@ -25,6 +25,24 @@ namespace SneakerSeeker3.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Supplier.ToListAsync());
+
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> UploadAsync()
+        {
+            string filePath = null;
+            if (Request.Form.Files != null && Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files[0];
+                filePath = "/uploads/" + (DateTime.UtcNow.ToString("yyyyMMddHHmmss")) + "_" + file.FileName;
+                using (var stream = System.IO.File.Create(hostingEnvironment.WebRootPath + filePath))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            return Json(new { filePath = filePath });
         }
 
         // GET: SuppliersManager/Details/5
