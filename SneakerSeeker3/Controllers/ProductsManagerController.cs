@@ -11,7 +11,7 @@ using SneakerSeeker3.Models;
 
 namespace SneakerSeeker3.Controllers
 {
-	[Authorize(Roles = "Role1")]
+	[Authorize(Roles = "Admin")]
 	public class ProductsManagerController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -4,77 +4,86 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+    <div class="cart-table-area table-responsive">
+        <div class="container-fluid">
+            <div class="col-12 col-lg-8">
+                <h2>Product Menu</h2>
+                <p>
+                    <a asp-action="Create">Add New Product Here</a>
+                </p>
+                <div class="table-responsive-sm">
+                    <table class="table table-hover table-fixed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SKU)
+                                </th>
+                                <th>
+                                    Product Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Unit Price
+                                </th>
+                                <th>
+                                    Image Url
+                                </th>
+                                <th>
+                                    Category
+                                </th>
+                                <th>
+                                    Supplier
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.color)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SKU)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductDescription)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProductURL)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cat.CategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Sup.CompanyName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.color.Color)
+                                    </td>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SKU)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sup)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.color)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKU)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cat.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sup.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.color.Color)
-            </td>
-            
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
 
-            </td>
+                                    </td>
 
-        </tr>
-}
-    </tbody>
-</table>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>

@@ -11,9 +11,9 @@ namespace SneakerSeeker3.Models
         [Key]
         public virtual int ItemSizeId { get; set; }
 
-        [Required(ErrorMessage = "Please enter Description for Size")]
+        [Required(ErrorMessage = "Please enter Size")]
         [Display(Name = "Size")]
-        [StringLength(4, ErrorMessage = "Size could not be greater than 4 characters")]
+        [StringLength(3, ErrorMessage = "Size could not have more than 2 numbers")]
         public virtual String Size { get; set; }
 
         public virtual List<Product> Products { get; set; }

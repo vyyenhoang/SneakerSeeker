@@ -15,8 +15,7 @@ namespace SneakerSeeker3.Models
 		public Order() { }
 		public Order(DateTime OrderDate)
 		{
-			this.OrderDate = OrderDate;
-
+			this.OrderDate = DateTime.Now;
 
 		}
 
@@ -24,7 +23,6 @@ namespace SneakerSeeker3.Models
 
 		[Key]
 		public virtual int OrderId { get; set; } //Primary Key
-
 
 		public virtual DateTime OrderDate { get; set; }
 

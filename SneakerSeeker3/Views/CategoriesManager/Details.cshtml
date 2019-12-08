@@ -4,39 +4,44 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+    <div class="cart-table-area section-padding-100">
+        <div class="container-fluid">
+            <div class="col-12 col-lg-8">
+                <h2>Details of This Category</h2>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CategoryName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CategoryName)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CategoryName)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt>
+                            Image URL
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ImageURL)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Active)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Active)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model.CategoryId">Edit</a> |
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -3,33 +3,43 @@
 @{
     ViewData["Title"] = "Index";
 }
+    <div class="cart-table-area section-padding-100">
+        <div class="container-fluid">
+            <div class="col-12 col-lg-12">
 
-<h2>Index</h2>
+                <h2>Color Menu</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemColorId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemColorId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemColorId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <p>
+                    <a asp-action="Create">Add New Color Here</a>
+                </p>
+                <div class="table-responsive-sm">
+                    <table class="table table-hover table-fixed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Color)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Color)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.ItemColorId">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.ItemColorId">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.ItemColorId">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+             </div>
+
+         </div>
+    </div>

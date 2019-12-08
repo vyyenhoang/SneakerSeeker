@@ -3,22 +3,26 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="col-12 col-lg-12">
+            <h2>Details of Size</h2>
 
-<h2>Details</h2>
-
-<div>
-    <h4>ItemSize</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ItemSizeId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Size)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Size)
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model.ItemSizeId">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+ </div>
