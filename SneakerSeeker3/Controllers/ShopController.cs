@@ -50,18 +50,18 @@ namespace SneakerSeeker3.Controllers
             ViewBag.sortByList = sortByList;
 
 
-            //Creating list for view number of dropdown .
-            List<SelectListItem> viewProducts = new List<SelectListItem>()
-            {
-                new SelectListItem { Text = "12", Value = "12" },
-                new SelectListItem { Text = "24", Value = "24" },
-                new SelectListItem { Text = "48", Value = "48" },
-                new SelectListItem { Text = "96", Value = "96" }
-            };
+            ////Creating list for view number of dropdown .
+            //List<SelectListItem> viewProducts = new List<SelectListItem>()
+            //{
+            //    new SelectListItem { Text = "12", Value = "12" },
+            //    new SelectListItem { Text = "24", Value = "24" },
+            //    new SelectListItem { Text = "48", Value = "48" },
+            //    new SelectListItem { Text = "96", Value = "96" }
+            //};
             //Assigning list to ViewBag and view number value will be show in the dropdown of Shop page
-            ViewBag.viewProducts = viewProducts;
+            //ViewBag.viewProducts = viewProducts;
 
-            #region sorting, searching condition given below. Based on the condition Products list will be shown
+            //#region sorting, searching condition given below. Based on the condition Products list will be shown
             // Here id value come from clients brand page. when any particular brand click, id is not null, then condition where work here.
             // if only shop page load without id then all the products will show in the shop page. 
             if (id != null)
@@ -88,7 +88,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderByDescending(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel3 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel3 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel3);
                 }
 
@@ -96,62 +96,62 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderByDescending(s => s.ProductName);
                     // return View(await application.ToListAsync());
-                    var pageModel3 = await PagingList.CreateAsync(application, 5, page);
-                    return View(pageModel3);
+                    var pageModel4 = await PagingList.CreateAsync(application, 100, page);
+                    return View(pageModel4);
                 }
 
                 if (sortBy != null && sortBy == "Name (A-Z)")
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductName);
                     // return View(await application.ToListAsync());
-                    var pageModel3 = await PagingList.CreateAsync(application, 5, page);
-                    return View(pageModel3);
+                    var pageModel5 = await PagingList.CreateAsync(application, 100, page);
+                    return View(pageModel5);
                 }
 
 
-                if (viewProduct != null)
-                {
-                    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 12. That count of number of product will be show in the shop page.
-                    if (viewProduct == "12")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(12).OrderBy(s => s.ProductId);
-                        // return View(result.ToList());
-                        var pageModel4 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel4);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 24. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "24")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(24).OrderBy(s => s.ProductId);
-                        // return View(result.ToList());
-                        var pageModel5 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel5);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 48. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "48")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(48).OrderBy(s => s.ProductId);
-                        // return View(result.ToList());
-                        var pageModel6 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel6);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 96. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "96")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(96).OrderBy(s => s.ProductId);
-                        // return View(result.ToList());
-                        var pageModel7 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel7);
-                    }
-                    // All the products list 
-                    else
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
-                        //  return View(result.ToList());
-                        var pageModel8 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel8);
-                    }
-                }
+                //if (viewProduct != null)
+                //{
+                //    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 12. That count of number of product will be show in the shop page.
+                //    if (viewProduct == "12")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(12).OrderBy(s => s.ProductId);
+                //        // return View(result.ToList());
+                //        var pageModel4 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel4);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 24. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "24")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(24).OrderBy(s => s.ProductId);
+                //        // return View(result.ToList());
+                //        var pageModel5 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel5);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 48. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "48")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(48).OrderBy(s => s.ProductId);
+                //        // return View(result.ToList());
+                //        var pageModel6 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel6);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is not null AND if viewProduct is not null and select 96. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "96")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(96).OrderBy(s => s.ProductId);
+                //        // return View(result.ToList());
+                //        var pageModel7 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel7);
+                //    }
+                //    // All the products list 
+                //    else
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
+                //        //  return View(result.ToList());
+                //        var pageModel8 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel8);
+                //    }
+                //}
                 // If minPrice and maxPrice is not null, that means, user want to filter by price, then this query execute
                 if (minPrice != null && maxPrice != null)
                 {
@@ -164,7 +164,7 @@ namespace SneakerSeeker3.Controllers
                 // If categoryId,  ItemColorId, sortBy, viewProduct, minPrice, maxPrice all are null but brands/supplier not null then this query execute
                 var applicationDbContext = _context.Product.Where(s => s.SupplierId == id).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                 // return View(await applicationDbContext.ToListAsync());
-                var pageModel10 = await PagingList.CreateAsync(applicationDbContext, 5, page);
+                var pageModel10 = await PagingList.CreateAsync(applicationDbContext, 100, page);
                 return View(pageModel10);
             }
             else
@@ -174,7 +174,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.CategoryId == categoryId).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel11 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel11 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel11);
                 }
                 // This will be execute, If id(id means supplier/brands id) is null AND if ItemColorId is not null. That means, when users click any color, selected color list product will be show in the shop page.
@@ -182,7 +182,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.ItemColorId == ItemColorId).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                     //return View(await application.ToListAsync());
-                    var pageModel12 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel12 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel12);
                 }
                 // This will be execute, If id(id means supplier/brands id) is null AND if sortBy is not null and sortBy is "Newest". That means, when users select sortby from dropdown, selected sorted wise list of product will be show in the shop page.
@@ -190,7 +190,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderByDescending(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel13 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel13 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel13);
                 }
 
@@ -198,65 +198,65 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderByDescending(s => s.ProductName);
                     // return View(await application.ToListAsync());
-                    var pageModel3 = await PagingList.CreateAsync(application, 5, page);
-                    return View(pageModel3);
+                    var pageModel4 = await PagingList.CreateAsync(application, 100, page);
+                    return View(pageModel4);
                 }
 
                 if (sortBy != null && sortBy == "Name (A-Z)")
                 {
                     var application = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductName);
                     // return View(await application.ToListAsync());
-                    var pageModel3 = await PagingList.CreateAsync(application, 5, page);
-                    return View(pageModel3);
+                    var pageModel5 = await PagingList.CreateAsync(application, 100, page);
+                    return View(pageModel5);
                 }
 
 
 
 
 
-                if (viewProduct != null)
-                {
-                    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 12. That count of number of product will be show in the shop page.
-                    if (viewProduct == "12")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(12).OrderBy(s => s.ProductId); ;
-                        //  return View(result.ToList());
-                        var pageModel14 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel14);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 24. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "24")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(24).OrderBy(s => s.ProductId); ;
-                        //  return View(result.ToList());
-                        var pageModel15 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel15);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 48. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "48")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(48).OrderBy(s => s.ProductId);
-                        //  return View(result.ToList());
-                        var pageModel16 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel16);
-                    }
-                    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 96. That count of number of product will be show in the shop page.
-                    else if (viewProduct == "96")
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(96).OrderBy(s => s.ProductId);
-                        //  return View(result.ToList());
-                        var pageModel17 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel17);
-                    }
-                    // All the products list 
-                    else
-                    {
-                        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
-                        //  return View(result.ToList());
-                        var pageModel18 = await PagingList.CreateAsync(result, 5, page);
-                        return View(pageModel18);
-                    }
-                }
+                //if (viewProduct != null)
+                //{
+                //    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 12. That count of number of product will be show in the shop page.
+                //    if (viewProduct == "12")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(12).OrderBy(s => s.ProductId); ;
+                //        //  return View(result.ToList());
+                //        var pageModel14 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel14);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 24. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "24")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(24).OrderBy(s => s.ProductId); ;
+                //        //  return View(result.ToList());
+                //        var pageModel15 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel15);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 48. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "48")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(48).OrderBy(s => s.ProductId);
+                //        //  return View(result.ToList());
+                //        var pageModel16 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel16);
+                //    }
+                //    // This will be execute, If id(id means supplier/brands id) is null AND if viewProduct is not null and select 96. That count of number of product will be show in the shop page.
+                //    else if (viewProduct == "96")
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).Take(96).OrderBy(s => s.ProductId);
+                //        //  return View(result.ToList());
+                //        var pageModel17 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel17);
+                //    }
+                //    // All the products list 
+                //    else
+                //    {
+                //        var result = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
+                //        //  return View(result.ToList());
+                //        var pageModel18 = await PagingList.CreateAsync(result, 5, page);
+                //        return View(pageModel18);
+                //    }
+                //}
                 // If minPrice and maxPrice is not null, that means, user want to filter by price, then this query execute
                 if (minPrice != null && maxPrice != null)
                 {
@@ -267,10 +267,10 @@ namespace SneakerSeeker3.Controllers
                 }
                 // If categoryId,  ItemColorId, sortBy, viewProduct, minPrice, maxPrice, brands/supplier all are null then this query execute. This is default 
                 var applicationDbContext = _context.Product.AsNoTracking().Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
-                var pageModel = await PagingList.CreateAsync(applicationDbContext, 5, page);
+                var pageModel = await PagingList.CreateAsync(applicationDbContext, 100, page);
                 return View(pageModel);
             }
-            #endregion
+            //#endregion
 
         }
 

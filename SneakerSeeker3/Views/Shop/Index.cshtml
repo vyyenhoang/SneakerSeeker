@@ -141,14 +141,7 @@
                                 @Html.DropDownList("sortBy", (IEnumerable<SelectListItem>)ViewBag.sortByList, new { onchange = "this.form.submit();" })
                             }
                         </div>
-                        <div class="view-product d-flex align-items-center">
-                            <p>View</p>
-                            @* view by dropdown *@
-                            @using (Html.BeginForm("Index", "Shop"))
-                            {
-                                @Html.DropDownList("viewProduct", (IEnumerable<SelectListItem>)ViewBag.viewProducts, new { onchange = "this.form.submit();" })
-                            }
-                        </div>
+                        
                     </div>
                 </div>
             </div>
