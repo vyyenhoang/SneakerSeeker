@@ -41,3 +41,11 @@ body{
     color: #DB4455;
 
 }
+
+.single-product-wrapper .product-description .product-meta-data .line {
+    background-color:  #DB4455;
+}
+
+.single-product-wrapper .product-description .product-meta-data .product-price {
+    color: #DB4455;
+}
