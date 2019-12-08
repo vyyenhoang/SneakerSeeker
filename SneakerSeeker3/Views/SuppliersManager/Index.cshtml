@@ -3,39 +3,50 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="cart-table-area amado_product_area table-responsive">
+    <div class="container-fluid">
+        <div class="col-12 col-lg-10">
 
-<h2>Index</h2>
+            <h2>Supplier Ma</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.URL)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.URL)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SupplierId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SupplierId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SupplierId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+            <div class="cart-table clearfix">
+                <table class="table table-hover table-fixed">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CompanyName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.URL)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyName)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.URL)*@
+                                    <img src="@(item.URL)" alt="">
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.SupplierId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.SupplierId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.SupplierId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

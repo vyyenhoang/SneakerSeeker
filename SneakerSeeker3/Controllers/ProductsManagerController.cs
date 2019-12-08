@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace SneakerSeeker3.Controllers
 	public class ProductsManagerController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        private IHostingEnvironment hostingEnvironment;
         public ProductsManagerController(ApplicationDbContext context)
         {
             _context = context;
@@ -26,6 +27,22 @@ namespace SneakerSeeker3.Controllers
         {
             var applicationDbContext = _context.Product.Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> UploadAsync()
+        {
+            string filePath = null;
+            if (Request.Form.Files != null && Request.Form.Files.Count > 0)
+            {
+                var file = Request.Form.Files[0];
+                filePath = "/uploads/" + (DateTime.UtcNow.ToString("yyyyMMddHHmmss")) + "_" + file.FileName;
+                using (var stream = System.IO.File.Create(hostingEnvironment.WebRootPath + filePath))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            return Json(new { filePath = filePath });
         }
 
         // GET: ProductsManager/Details/5

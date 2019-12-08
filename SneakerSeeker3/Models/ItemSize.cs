@@ -13,7 +13,7 @@ namespace SneakerSeeker3.Models
 
         [Required(ErrorMessage = "Please enter Size")]
         [Display(Name = "Size")]
-        [StringLength(3, ErrorMessage = "Size could not have more than 2 numbers")]
+        //[StringLength(3, ErrorMessage = "Size could not have more than 2 numbers")]
         public virtual String Size { get; set; }
 
         public virtual List<Product> Products { get; set; }
