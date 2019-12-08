@@ -103,9 +103,11 @@
                 <input type="range" min="0" max="5000" onchange="updateMinInput(this.value);"> <br />
                 <input type="range" min="0" max="5000" onchange="updateMaxInput(this.value);">
                 <br />
-                <input type="number" name="minPrice" id="minValue" min="0" maxlength="6" max="999999" value="00" size="6" readonly>
-                <input type="number" name="maxPrice" id="maxValue" min="0" maxlength="6" max="999999" value="00" size="6" readonly> <br /><br />
-                <button class="aa-filter-btn" type="submit">Filter</button>
+                <p>From:</p><input type="number" name="minPrice" id="minValue" min="0" maxlength="6" max="999999" value="00" size="6">
+                <br />
+                <p>To:</p><input type="number" name="maxPrice" id="maxValue" min="0" maxlength="6" max="999999" value="00" size="6"> <br /><br />
+                
+               <button class="btn-danger" type="submit">Filter</button>
 
             }
         </div>
@@ -113,7 +115,6 @@
 
 
 </div>
-
 
 
 

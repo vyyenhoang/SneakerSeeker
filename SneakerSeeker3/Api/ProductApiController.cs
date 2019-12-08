@@ -22,7 +22,7 @@ namespace SneakerSeeker3.Api
         }
 
 
-        #region GET Method
+        //GET Method
         /**
          * This is get method and method name is GetAllProducts. 
          * Here we get following column value from database. Here we write LINQ join query becasue we get data from Product, Category, Supplier ItemSize and ItemColor tables.
@@ -60,10 +60,10 @@ namespace SneakerSeeker3.Api
                 return Ok(result);
             }
         }
-        #endregion
+  
 
 
-        #region GET Method
+        //#region GET Method
         /**
          * This is get method and method name is GetAllProductsById. Here we have to pass Product id as a parameter.
          * If we want to get particular 1 product record then just need to GetAllProductsById/id
@@ -107,10 +107,10 @@ namespace SneakerSeeker3.Api
                 });
             }
         }
-        #endregion
+    
 
 
-        #region POST Method
+        //#region POST Method
         /**
          * This is post method and method name is InsertProduct
          * https://localhost:44351/api/ProductApi/InsertProduct
@@ -139,10 +139,10 @@ namespace SneakerSeeker3.Api
                 return BadRequest(ex.ToString());
             }
         }
-        #endregion
+     
 
 
-        #region PUT/UPDATE Method
+        //#region PUT/UPDATE Method
         /**
          * This is put/update method and method name is UpdateProduct
          * https://localhost:44351/api/ProductApi/UpdateProduct
@@ -181,10 +181,10 @@ namespace SneakerSeeker3.Api
                 return BadRequest(ex.ToString());
             }
         }
-        #endregion
+      
 
 
-        #region DELETE Method
+        //#region DELETE Method
         /**
          * This is Delete method and method name is DeleteOrder
         * https://localhost:44351/api/ProductApi/DeleteProduct/1
@@ -220,6 +220,6 @@ namespace SneakerSeeker3.Api
                 return BadRequest(ex.ToString());
             }
         }
-        #endregion
+       
     }
 }
