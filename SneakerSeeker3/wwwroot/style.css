@@ -117,3 +117,15 @@ body{
 .btn-link {
     color: #DB4455;
 }
+
+.main-content-wrapper .single-product-area .breadcrumb .breadcrumb-item a:hover {
+    color: #DB4455;
+}
+
+.main-content-wrapper .single-product-area .breadcrumb .breadcrumb-item a:focus {
+    color: #DB4455;
+}
+
+.main-content-wrapper .products-catagories-area {
+    padding-top: 100px;
+}
