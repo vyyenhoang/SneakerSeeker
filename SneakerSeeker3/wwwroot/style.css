@@ -34,3 +34,10 @@ body{
     padding-top: 0px;
 }
 
+.main-content-wrapper .header-area .amado-nav li a::after {
+    background-color: #DB4455;
+}
+.main-content-wrapper .header-area .amado-nav li a:hover{
+    color: #DB4455;
+
+}

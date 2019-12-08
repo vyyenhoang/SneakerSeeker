@@ -23,6 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\scss\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="bootstrap" Version="4.4.1" />
     <PackageReference Include="bootstrap.sass" Version="4.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
