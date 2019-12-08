@@ -100,3 +100,7 @@ body{
 .search-wrapper .search-close {
     background-color: #DB4455;
 }
+
+.product-topbar .nice-select .list .option.selected {
+    color: #DB4455;
+}

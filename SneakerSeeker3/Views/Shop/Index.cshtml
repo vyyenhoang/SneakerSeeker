@@ -106,8 +106,8 @@
                 <p>From:</p><input type="number" name="minPrice" id="minValue" min="0" maxlength="6" max="999999" value="00" size="6">
                 <br />
                 <p>To:</p><input type="number" name="maxPrice" id="maxValue" min="0" maxlength="6" max="999999" value="00" size="6"> <br /><br />
-                
-               <button class="btn-danger" type="submit">Filter</button>
+
+                <button class="btn-danger" type="submit">Filter</button>
 
             }
         </div>
@@ -127,14 +127,14 @@
                     <!-- Sorting -->
                     <div class="product-sorting d-flex">
                         <div class="sort-by-date d-flex align-items-center mr-15">
-                            <p>Sort by</p>
+                            <p>Sort by</p><p></p>
                             @* sort by dropdown *@
                             @using (Html.BeginForm("Index", "Shop"))
                             {
                                 @Html.DropDownList("sortBy", (IEnumerable<SelectListItem>)ViewBag.sortByList, new { onchange = "this.form.submit();" })
                             }
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -168,12 +168,12 @@
                             <!-- Ratings & Cart -->
                             <div class="ratings-cart text-right">
                                 @*<div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>*@
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </div>*@
                                 <div class="cart">
                                     <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
                                 </div>
@@ -189,9 +189,18 @@
 
     </div>
 </div>
-<!-- ##### Main Content Wrapper End ##### -->
-<script src="~/js/jquery/jquery-2.2.4.min.js"></script>
 
+<!-- ##### Main Content Wrapper End ##### -->
+<!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="js/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Plugins js -->
+<script src="js/plugins.js"></script>
+<!-- Active js -->
+<script src="js/active.js"></script>
 <script type="text/javascript">
     function updateMinInput(val) {
         document.getElementById('minValue').value = 00;
