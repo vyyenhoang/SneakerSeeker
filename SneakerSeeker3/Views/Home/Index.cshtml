@@ -93,30 +93,34 @@
 
 
 <!-- Product Catagories Area Start -->
-<div class="products-catagories-area clearfix">
-    <div class="amado-pro-catagory clearfix">
+    <div class="products-catagories-area clearfix">
+        <h2>NEW IN - OUR LATEST COLLECTION</h2>
+        <br /><br />
+        <div class="amado-pro-catagory clearfix">
 
 
-        @foreach (var product in Model)
-        {
-            <!-- Single Catagory -->
-            <div class="single-products-catagory clearfix">
-                <a href="@Url.Action("Details", "Shop", new { Id = product.ProductId })">
-                    <img src="@(product.ProductURL)" alt="" class="img-rounded">
-                    <div class="hover-content">
-                        <div class="line"></div>
 
-                        <p>CAD@(product.UnitPrice)</p>
-                        <h4>@(product.ProductName)</h4>
+            @foreach (var product in Model)
+            {
+                <!-- Single Catagory -->
+                <div class="single-products-catagory clearfix">
+                    <a href="@Url.Action("Details", "Shop", new { Id = product.ProductId })">
+                        <img src="@(product.ProductURL)" alt="">
+                        <div class="hover-content">
+                            <div class="line"></div>
 
-                    </div>
-                </a>
+                            <p>CAD@(product.UnitPrice)</p>
+                            <h4>@(product.ProductName)</h4>
 
-            </div>
-                   
+                        </div>
+                    </a>
+
+                </div>
+
             }
         </div>
-        </div>
+    </div>
+   
 <!-- Product Catagories Area End -->
   
 <a href="E:\ASP\SneakerSeeker5\SneakerSeeker3\Views\Home\Index.cshtml"></a>

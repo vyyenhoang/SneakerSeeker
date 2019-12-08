@@ -56,6 +56,9 @@ namespace SneakerSeeker3.Controllers
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "SupplierId", "CompanyName");
             ViewData["ItemColorId"] = new SelectList(_context.ItemColor, "ItemColorId", "Color");
             return View();
+           
+
+          
         }
 
         // POST: ProductsManager/Create

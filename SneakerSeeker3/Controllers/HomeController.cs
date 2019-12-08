@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+
 using SneakerSeeker3.Data;
 using SneakerSeeker3.Models;
 
@@ -23,7 +24,9 @@ namespace SneakerSeeker3.Controllers
 
         public IActionResult Index()
         {
-            return View(_context.Product.ToList());
+            //return View(_context.Product.ToList());
+
+            return View(_context.Product.ToList().Take(9).OrderBy(s => s.ProductId));
         }
 
 

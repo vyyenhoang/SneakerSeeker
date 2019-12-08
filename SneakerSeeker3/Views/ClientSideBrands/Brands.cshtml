@@ -6,25 +6,28 @@
 }
 
 @* Brands/supplier list show image and image click to go shops with particular selected bands products*@
-<div class="container" style="margin-top:300px;">
-    <div class="row">
-        <div class="col-lg-12">
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-2">
-                    <div class="card">
-                        @Html.HiddenFor(modelItem => item.SupplierId)
-                        <a href="@Url.Action("Index", "Shop", new { id = item.SupplierId})">
-                            <img src="@Html.DisplayFor(modelItem =>item.URL)" class="card-img-top" style="height:100px;width:140px;" alt="..." />
-                            <img class="hover-img" src="@(item.SupplierId)" alt="">
-                        </a>
+    <div class="amado_product_area section-padding-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-topbar d-xl-flex align-items-end justify-content-between">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-2">
+                                <div class="card">
+                                    @Html.HiddenFor(modelItem => item.SupplierId)
+                                    <a href="@Url.Action("Index", "Shop", new { id = item.SupplierId})">
+                                        <img src="@Html.DisplayFor(modelItem =>item.URL)" class="card-img-top" style="height:100px;width:140px;" alt="..." />
+                                        <img class="hover-img" src="@(item.SupplierId)" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        }
+
                     </div>
+                    <br />
                 </div>
-            }
-
+            </div>
+            </div>
         </div>
-        <br />
-    </div>
-</div>
-
 

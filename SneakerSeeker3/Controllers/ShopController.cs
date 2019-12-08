@@ -71,7 +71,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.CategoryId == categoryId).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel1 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel1 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel1);
 
                 }
@@ -80,7 +80,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.ItemColorId == ItemColorId).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel2 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel2 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel2);
                 }
                 // This will be execute, If id(id means supplier/brands id) is not null AND if sortBy is not null and sortBy is "Newest". That means, when users select sortby from dropdown, selected sorted wise list of product will be show in the shop page.
@@ -157,7 +157,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.UnitPrice >= minPrice && s.UnitPrice <= maxPrice).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId).OrderBy(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel9 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel9 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel9);
                 }
 
@@ -262,7 +262,7 @@ namespace SneakerSeeker3.Controllers
                 {
                     var application = _context.Product.Where(s => s.UnitPrice >= minPrice && s.UnitPrice <= maxPrice).Include(p => p.Cat).Include(p => p.Sup).Include(p => p.color).OrderBy(s => s.ProductId);
                     // return View(await application.ToListAsync());
-                    var pageModel19 = await PagingList.CreateAsync(application, 5, page);
+                    var pageModel19 = await PagingList.CreateAsync(application, 100, page);
                     return View(pageModel19);
                 }
                 // If categoryId,  ItemColorId, sortBy, viewProduct, minPrice, maxPrice, brands/supplier all are null then this query execute. This is default 
