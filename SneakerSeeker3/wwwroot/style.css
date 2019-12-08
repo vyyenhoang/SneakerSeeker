@@ -108,3 +108,7 @@ body{
 .main-content-wrapper .header-area .nav-close {
     background-color: #DB4455;
 }
+
+.btn-link {
+    color: #DB4455;
+}
