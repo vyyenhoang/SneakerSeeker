@@ -105,7 +105,7 @@
                     }
 
                     <!-- Add to Cart Form -->
-                <form asp-action="AddToCart" asp-controller="Cart" asp-class="cart clearfix" method="post">
+                <form asp-action="AddToCart" asp-controller="Shop" asp-class="cart clearfix" method="post">
                     <div class="cart-btn d-flex mb-50">
                         <p>Qty</p>
                         <div class="quantity">
@@ -117,11 +117,12 @@
 
                     @*<a class="aa-add-to-cart-btn" href="@Url.Action("AddToCart", "Product", new { id=Model.ProductId})">Add To Cart</a>*@
 
-                    <div class="AddToCart" id="AddToCart-@(Model.ProductId)"></div>
+
                     @*<a class="btn amado-btn" id="@(Model.ProductId)">Add to Cartss</a>*@
                     @*<a class="btn amado-btn" href="@Url.Action("AddToCart", "Cart", new { id=Model.ProductId})">Add To Cart</a>*@
-                    <input type="submit" value="Add To Cart" class="btn btn-default" style="border: solid 2px" />
-                    <input type="hidden" value="AddToCart-@(Model.ProductId)" class="btn btn-default" name="productId" style="border: solid 2px" />
+                    <input name="ProductId" id="ProductId" value="@Model.ProductId" type="hidden" />
+                    <button class="btn btn-primary">Add to Cart</button>
+                    <a href="javascript:history.go(-1);" class="btn btn-primary"><< Back to List</a>
                 </form>
 
 

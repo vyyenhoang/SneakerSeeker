@@ -86,5 +86,7 @@ namespace SneakerSeeker3.Data
 		}
 
 		public DbSet<SneakerSeeker3.Models.Cart> Cart { get; set; }
+		public DbSet<SneakerSeeker3.Models.Order> Order { get; set; }
+		public DbSet<SneakerSeeker3.Models.OrderDetail> OrderDetail { get; set; }
 	}
 }

@@ -70,7 +70,10 @@ namespace SneakerSeeker3.Models
 
         public virtual List<ItemReview> ItemReviews { get; set; }
 
-		public virtual List<CartItem> ShoppingCartItems { get; set; }
+        [InverseProperty("Product")]
+        public virtual ICollection<Cart> Cart { get; set; }
+        [InverseProperty("Product")]
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
 
     }
 }

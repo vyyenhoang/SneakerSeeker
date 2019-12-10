@@ -17,9 +17,19 @@ namespace SneakerSeeker3.Models
         [Key]
         public virtual int Id { get; set; }
 
+        public virtual int ProductId { get; set; }
+        public virtual int Quantity { get; set; }
+        [Column(TypeName = "decimal(10, 2)")]
+        public virtual decimal Price { get; set; }
+        [Required]
+        [StringLength(100)]
+        public virtual string Username { get; set; }
 
-        public virtual SneakerSeekerUser User { get; set; }
-        public virtual List<CartItem> CartItems { get; set; }
+        [ForeignKey("ProductId")]
+        [InverseProperty("Cart")]
+        public virtual Product Product { get; set; }
+        //public virtual SneakerSeekerUser User { get; set; }
+        //public virtual List<CartItem> CartItems { get; set; }
 
 		
 	}

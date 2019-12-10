@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<SneakerSeeker3.Models.CartItem>
+﻿@model IEnumerable<SneakerSeeker3.Models.Cart>
 
 @{
     ViewData["Title"] = "Cart";
@@ -12,10 +12,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Pro)
+                @Html.DisplayNameFor(model => model.Product)
             </th>
             <th class="text-center">
-                @Html.DisplayNameFor(model => model.Qty)
+                @Html.DisplayNameFor(model => model.Quantity)
             </th>
             <th class="text-right">
                 @Html.DisplayNameFor(model => model.Price)
@@ -29,7 +29,7 @@
             total += item.Quantity * item.Price;  // update the running total of the whole cart
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Product.Name)
+                    @Html.DisplayFor(modelItem => item.Product.ProductName)
                 </td>
                 <td class="text-center">
                     @Html.DisplayFor(modelItem => item.Quantity)
@@ -38,7 +38,7 @@
                     @String.Format("{0:c}", item.Price)
                 </td>
                 <td>
-                    <a asp-action="RemoveFromCart" asp-route-id="@item.CartId" onclick="return confirmDelete();">Delete</a>
+                    <a asp-action="RemoveFromCart" asp-route-id="@item.Id" onclick="return confirmDelete();">Delete</a>
                 </td>
             </tr>
         }
@@ -51,4 +51,4 @@
             </td>
         </tr>
     </tbody>
-</table>*@
+</table>

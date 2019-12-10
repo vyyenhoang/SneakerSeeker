@@ -124,7 +124,10 @@
                     SneakerSeeker3
                 </a>
             </div>
-            <!-- Amado Nav -->
+
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+			{
+                <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li class="dropdown">
@@ -147,7 +150,20 @@
 
                 </ul>
             </nav>
+			}
+			else {
+                <nav class="amado-nav">
+                <ul>
+                    <li>
+                        <a asp-area="" asp-controller="Shop" asp-action="Index">All Products</a>
+                    </li>
 
+                    <li>
+                        <a asp-area="" asp-controller="ClientSideBrands" asp-action="Brands">Brands</a>
+                    </li>
+
+                </ul>
+            </nav> }
             <!-- Header Area End -->
 
 

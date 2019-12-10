@@ -1,43 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SneakerSeeker3.Models
 {
-	public class Order
+	public partial class Order
 
 	{
 
-
-
-		public Order() { }
-		public Order(DateTime OrderDate)
+		public Order()
 		{
-			this.OrderDate = DateTime.Now;
-
+            OrderDetail = new HashSet<OrderDetail>();
 		}
 
+        public int OrderId { get; set; }
+        [Column(TypeName = "datetime")]
+        public DateTime OrderDate { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string UserId { get; set; }
+        [Column(TypeName = "decimal(10, 2)")]
+        public decimal Total { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
 
-		[Key]
-		public virtual int OrderId { get; set; } //Primary Key
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string Address { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string City { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string Province { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string PostalCode { get; set; }
+        [Required]
+        [StringLength(15)]
+        public string Phone { get; set; }
 
-		public virtual DateTime OrderDate { get; set; }
+        [InverseProperty("Order")]
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
 
-
-		public virtual Cart cart { get; set; }
-
-		public virtual int StatusId { get; set; }
-		public virtual OrderStatus Stat { get; set; }
-
-		public virtual int PaymentId { get; set; }
-		public virtual Payment Pay { get; set; }
-
-
-
-	}
+    }
 
 
 }
