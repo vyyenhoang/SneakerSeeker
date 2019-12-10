@@ -115,8 +115,18 @@ body{
 }
 
 .btn-link {
-    color: #DB4455;
+    color: black;
+    font-size: 12px;
+    text-transform: uppercase;
+    border: solid 2px;
 }
+
+
+    .btn-link:hover {
+        color: #DB4455;
+        border: solid 2px;
+    }
+
 
 .main-content-wrapper .single-product-area .breadcrumb .breadcrumb-item a:hover {
     color: #DB4455;

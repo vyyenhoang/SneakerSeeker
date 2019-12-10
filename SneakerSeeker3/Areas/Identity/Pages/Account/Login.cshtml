@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-default" style="border: 2px solid;">Log in</button>
+                                    <button type="submit" class="btn btn-link navbar-btn navbar-link" style="border: 2px solid;">Log in</button>
                                 </div>
                                 <div class="form-group">
                                     <p>
@@ -47,9 +47,8 @@
                             </form>
                         </section>
                     </div>
-                    <div class="col-md-5 col-md-offset-2">
                         <section>
-                            <h4>Use another service to log in.</h4>
+                            <h2>Use another service to log in.</h2>
                             <hr />
                             @{
                                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -68,7 +67,7 @@
                                             <p>
                                                 @foreach (var provider in Model.ExternalLogins)
                                                 {
-                                                    <button type="submit" class="btn btn-default" name="provider" style="border: solid" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                                    <button type="submit" class="btn btn-link navbar-btn navbar-link" name="provider" style="border: solid" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                                 }
                                             </p>
                                         </div>
@@ -76,10 +75,13 @@
                                 }
                             }
                         </section>
-                    </div>
+                   
                 </div>
+                
             </div>
+            
         </div>
+        
     </div>
 
                 @section Scripts {
