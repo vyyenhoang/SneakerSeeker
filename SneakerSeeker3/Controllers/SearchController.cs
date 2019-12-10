@@ -25,15 +25,22 @@ namespace SneakerSeeker3.Controllers
         public JsonResult autocomplete(string term)
         {
             var products = GetProducts(term);
-            String[] Results = products.Select(product => product.SKU).ToArray();
-            return new JsonResult(Results);
+            String[] results = products.Select(product => product.ProductName).ToArray();
+
+            if (String.IsNullOrEmpty(term))
+            {
+                return Json(new { id = 1 });
+            }
+
+            else 
+            return new JsonResult(results);
         }
 
         private List<Product> GetProducts(String query)
         {
             return _context
                 .Product
-                .Where(product => product.SKU
+                .Where(product => product.ProductName
                             .ToLower()
                             .Contains(query.ToLower()))
                 .ToList();

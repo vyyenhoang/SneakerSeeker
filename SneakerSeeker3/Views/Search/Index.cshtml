@@ -1,124 +1,53 @@
 ﻿@model IEnumerable<SneakerSeeker3.Models.Product>
-@{
-    ViewData["Title"] = "ProductPage";
-}
+
+
+
 
 @{
+    ViewData["Title"] = "Products";
     Layout = "_Layout";
 }
+    
 
+        <div class="amado_product_area section-padding-100">
+            <div class="container-fluid">
 
+                <div class="row">
+                    <!-- Single Product Area -->
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                            <div class="single-product-wrapper">
+                                <a href="@Url.Action("Details", "Shop", new { Id = product.ProductId })">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="@(product.ProductURL)" alt="" class="img-rounded" style="width:500px; height:400px;">
+                                        @*<img class="hover-img" src="@(product.ProductURL)" alt="">*@
+                                    </div>
+                                </a>
 
-@foreach (var product in Model)
-{
-    <!-- Product Details Area Start -->
-    <div class="single-product-area section-padding-100 clearfix">
-        <div class="container-fluid">
+                                <!-- Product Description -->
+                                <div class="product-description d-flex align-items-center justify-content-between">
+                                    <!-- Product Meta Data -->
+                                    <div class="hover-content">
+                                        <div class="product-meta-data">
+                                            <div class="line"></div>
+                                            <p class="product-price">CAD@(product.UnitPrice)</p>
+                                            <h4>@(product.ProductName)</h4>
+                                        </div>
+                                    </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mt-50">
-                            <li class="breadcrumb-item"><a href="#">Home Here</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shop Here</a></li>
-                            <li class="breadcrumb-item"><a href="#">Category Here</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"> @(product.ProductName)  </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
+                                    <!--  Cart -->
+                                    <div class="ratings-cart text-right">
 
-                <div class="col-12 col-lg-7">
-                    <div class="single_product_thumb">
-                        <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(@(product.ProductURL);">
-                                </li>
-                                <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(@(product.ProductURL);">
-                                </li>
-                                <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(@(product.ProductURL);">
-                                </li>
-                                <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(@(product.ProductURL);">
-                                </li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <a class="gallery_img" href="@(product.ProductURL)">
-                                        <img class="d-block w-100" src="@(product.ProductURL)" alt="First slide">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="@(product.ProductURL)">
-                                        <img class="d-block w-100" src="@(product.ProductURL)" alt="Second slide">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="@(product.ProductURL)">
-                                        <img class="d-block w-100" src="@(product.ProductURL)" alt="Third slide">
-                                    </a>
-                                </div>
-                                <div class="carousel-item">
-                                    <a class="gallery_img" href="@(product.ProductURL)">
-                                        <img class="d-block w-100" src="@(product.ProductURL)" alt="Fourth slide">
-                                    </a>
+                                        <div class="cart">
+                                            <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-5">
-                    <div class="single_product_desc">
-                        <!-- Product Meta Data -->
-                        <div class="product-meta-data">
-                            <div class="line"></div>
-                            <p class="product-price">CAD@(product.UnitPrice)</p>
-                            <a href="#">
-                                <h4>@(product.ProductName)</h4>
-                            </a>
-
-
-                            <!-- Ratings & Review -->
-                            <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
-                                <div class="ratings">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                                <div class="review">
-                                    <a href="#">Write A Review</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="short_overview my-5">
-                            <p>@(product.ProductDescription)</p>
-                        </div>
-                        <!-- Add to Cart Form -->
-                        <form class="cart clearfix" method="post">
-                            <div class="cart-btn d-flex mb-50">
-                                <p>Qty</p>
-                                <div class="quantity">
-                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) & amp;& amp; qty & gt; 1) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
-                                </div>
-                            </div>
-
-
-
-                            <div class="AddToCart" id="AddToCart-@product.ProductId"></div>
-                            <a class="btn amado-btn" id="@product.ProductId">Add to Cart</a>
-
-                        </form>
-
-
-
-                    </div>
+                    }
                 </div>
 
 
@@ -126,8 +55,25 @@
 
             </div>
         </div>
-    </div>
 
-}
-<!-- Product Details Area End -->
-<!-- ##### Main Content Wrapper End ##### -->
+        <!-- ##### Main Content Wrapper End ##### -->
+        <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="js/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Plugins js -->
+        <script src="js/plugins.js"></script>
+        <!-- Active js -->
+        <script src="js/active.js"></script>
+        <script type="text/javascript">
+            function updateMinInput(val) {
+                document.getElementById('minValue').value = 00;
+                document.getElementById('minValue').value = val * 1;
+            }
+            function updateMaxInput(val) {
+                document.getElementById('maxValue').value = 00;
+                document.getElementById('maxValue').value = val * 1;
+            }
+        </script>
