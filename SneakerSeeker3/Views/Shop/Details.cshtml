@@ -78,19 +78,21 @@
                         </a>
 
 
-                        @*    <!-- Ratings & Review -->
-                            <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
-                                <div class="ratings">
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </div>
-                                        <div class="review">
-                                <a href="#">Write A Review</a>
-                            </div>*
-                                    </div>*@
+                        <!-- Ratings & Review -->
+                        <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                            </div>
+                            <div class="review">
+                                <a href="@Url.Action("Create", "ItemReviewsManager", new { Id = Model.ProductId })">Write A Review</a>
+                            </div>
+                        </div>
+
+                        Reviews @Html.DisplayFor(model => model.ItemReviews)
 
                     </div>
 
