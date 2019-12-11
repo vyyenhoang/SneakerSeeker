@@ -7,68 +7,74 @@
 
     <div class="cart-table-area section-padding-100">
         <div class="container-fluid">
-            <div class="col-12 col-lg-12">
-                <h2>Edit Information of This Shoes Here</h2>
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="checkout_details_area mt-50 clearfix">
+                        <div class="cart-title">
+                            <h2>Edit Information of This Shoes Here</h2>
+                        </div>
+                            <hr />
 
-                <hr />
-                @*<div class="row">*@
-                <div class="col-md-4">
-                    <form asp-action="Edit">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="ProductId" />
-                        <div class="form-group">
-                            <label asp-for="SKU" class="control-label"></label>
-                            <input asp-for="SKU" class="form-control" />
-                            <span asp-validation-for="SKU" class="text-danger"></span>
+                            <form asp-action="Edit">
+                                <div class="row">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="ProductId" />
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="SKU" class="control-label"></label>
+                                        <input asp-for="SKU" class="form-control" />
+                                        <span asp-validation-for="SKU" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="ProductName" class="control-label"></label>
+                                        <input asp-for="ProductName" class="form-control" />
+                                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="ProductDescription" class="control-label"></label>
+                                        <input asp-for="ProductDescription" class="form-control" />
+                                        <span asp-validation-for="ProductDescription" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="UnitPrice" class="control-label"></label>
+                                        <input asp-for="UnitPrice" class="form-control" />
+                                        <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="ProductURL" class="control-label"></label>
+                                        <input asp-for="ProductURL" class="form-control" />
+                                        <span asp-validation-for="ProductURL" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="CategoryId" class="control-label">Category</label>
+                                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+
+                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label asp-for="SupplierId" class="control-label">Supplier</label>
+                                        <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
+                                        <span asp-validation-for="SupplierId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                      <label asp-for="ItemColorId" class="control-label">Color</label>
+                                        <select asp-for="ItemColorId" class="form-control" asp-items="ViewBag.ItemColorId"></select>
+                                        <span asp-validation-for="ItemColorId" class="text-danger"></span>
+                                    </div>
+                                    <div class="cart-btn mt-50">
+                                        <input type="submit" value="Save" class="btn amado-btn mb-15" style="border: solid 2px;" />
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="ProductName" class="control-label"></label>
-                            <input asp-for="ProductName" class="form-control" />
-                            <span asp-validation-for="ProductName" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ProductDescription" class="control-label"></label>
-                            <input asp-for="ProductDescription" class="form-control" />
-                            <span asp-validation-for="ProductDescription" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="UnitPrice" class="control-label"></label>
-                            <input asp-for="UnitPrice" class="form-control" />
-                            <span asp-validation-for="UnitPrice" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ProductURL" class="control-label"></label>
-                            <input asp-for="ProductURL" class="form-control" />
-                            <span asp-validation-for="ProductURL" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="CategoryId" class="control-label">Category</label>
-                            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-                            <span asp-validation-for="CategoryId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="SupplierId" class="control-label">Supplier</label>
-                            <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
-                            <span asp-validation-for="SupplierId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ItemColorId" class="control-label">Color</label>
-                            <select asp-for="ItemColorId" class="form-control" asp-items="ViewBag.ItemColorId"></select>
-                            <span asp-validation-for="ItemColorId" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-default" style="border: solid 2px;" />
-                        </div>
-                    </form>
+                    </div>
+                </div>
+                <div>
+                    <a asp-action="Index">Back to List</a>
                 </div>
             </div>
-        </div>
-        <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
-    </div>
 
 
-                @section Scripts {
-                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-                }
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
