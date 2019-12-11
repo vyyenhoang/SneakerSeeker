@@ -6,49 +6,80 @@
     decimal total = 0;
 }
 
-<h1>Cart</h1>
+<div class="cart-table-area section-padding-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="cart-title mt-50">
+                    <h2>Shopping Cart</h2>
+                </div>
 
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product)
-            </th>
-            <th class="text-center">
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th class="text-right">
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            total += item.Quantity * item.Price;  // update the running total of the whole cart
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product.ProductName)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td class="text-right">
-                    @String.Format("{0:c}", item.Price)
-                </td>
-                <td>
-                    <a asp-action="RemoveFromCart" asp-route-id="@item.Id" onclick="return confirmDelete();">Delete</a>
-                </td>
-            </tr>
-        }
-        <tr>
-            <td colspan="2"></td>
-            <td class="text-right">@String.Format("{0:c}", total)</td>
-            <td>
-                <a asp-controller="Shop" asp-action="Index" class="btn btn-primary"><< Keep Shopping</a>
-                <a asp-controller="Shop" asp-action="Checkout" class="btn btn-primary">Checkout >></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <div class="cart-table clearfix">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                               
+                                <th> @Html.DisplayNameFor(model => model.Product)</th>
+                                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                                <th> @Html.DisplayNameFor(model => model.Quantity)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                total += item.Quantity * item.Price;  // update the running total of the whole cart
+                                <tr>
+
+
+                                    <td class="cart_product_desc">
+                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                    </td>
+
+                                    <td class="price">
+                                        @String.Format("{0:c}", item.Price)
+                                    </td>
+
+                                    <td class="qty">
+                                        <div class="qty-btn d-flex">
+
+                                            <div class="quantity">
+                                                @Html.DisplayFor(modelItem => item.Quantity)
+                                            </div>
+                                        </div>
+                                    </td>
+
+
+                                    <td>
+                                        <a asp-action="RemoveFromCart" asp-route-id="@item.Id" onclick="return confirmDelete();">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="cart-summary">
+                    <h5>
+                        Cart Total </br>
+                        @String.Format("{0:c}", total)
+                    </h5>
+                    <ul class="summary-table">
+                        <li><span>subtotal:</span> <span>@String.Format("{0:c}", total)</span></li>
+                        <li><span>delivery:</span> <span>Free</span></li>
+                        <li><span>total:</span> <span>@String.Format("{0:c}", total)</span></li>
+                    </ul>
+
+                    <div class="cart-btn mt-100">
+                        <a asp-controller="Shop" asp-action="Index" class="btn amado-btn w-100">Keep Shopping</a>
+                        <a asp-controller="Shop" asp-action="Checkout" class="btn amado-btn w-100">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
