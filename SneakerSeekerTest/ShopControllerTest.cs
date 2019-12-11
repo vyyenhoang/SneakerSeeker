@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text;
-using SneakerSeeker3.Controllers;
-using Xunit;
-using System.Linq;
+
 using SneakerSeeker3.Models;
 
 namespace SneakerSeekerTest
