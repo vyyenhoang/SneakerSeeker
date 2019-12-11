@@ -8,7 +8,7 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="amado-btn-group mt-30 mb-100">
         <ul class="amado-btn-group mt-30 mb-100">
             <li class="nav-item mr-auto">
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 14px; text-transform: uppercase"><p>Welcome to SS</p> @UserManager.GetUserName(User)!</a>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-size: 14px; text-transform: uppercase"><p>Welcome to SS</p> @UserManager.GetUserName(User)!<br />Edit Profile</a>
             </li>
             <br /><br />
             <li class="nav-item mr-auto">

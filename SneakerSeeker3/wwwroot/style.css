@@ -149,7 +149,7 @@ body{
 	background-color: #DB4455;
 	padding: 10px 10px;
 	font-size: 18px;
-	width: 10%;
+	/*width: 10%;*/
 }
 
 
@@ -180,4 +180,9 @@ body{
 .main-content-wrapper .cart-table-area .cart-summary {
     margin-top: 75px;
     padding: 30px 400px;
+}
+
+
+.form-control {
+    font-size: 2rem;
 }

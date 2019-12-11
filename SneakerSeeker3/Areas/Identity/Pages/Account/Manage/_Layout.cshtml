@@ -1,22 +1,163 @@
-﻿@{ 
+﻿@using Microsoft.AspNetCore.Identity
+
+
+@*@{
     Layout = "/Areas/Identity/Pages/_Layout.cshtml";
-}
+}*@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Profile Management | Sneaker Seeker</title>
 
-<h2>Manage your account</h2>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="icon" href="img/core-img/favicon.ico">
 
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+        <!-- Core Style CSS -->
+        <link rel="stylesheet" href="~/css/core-style.css">
+        <link rel="stylesheet" href="~/style.css">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <style type="text/css">
+        #nav {
+            width: 500px;
+            margin: 0;
+        }
+
+            #nav ul {
+                padding: 0;
+                list-style: none;
+            }
+
+                #nav ul li {
+                    float: left;
+                    text-align: center;
+                    width: 120px;
+                    margin: 1px;
+                }
+
+                    #nav ul li a {
+                        color: #808080;
+                        text-decoration: none;
+                        font-family: Calibri;
+                        background: #00ffff;
+                        display: block;
+                        padding: 10px;
+                    }
+
+                        #nav ul li a:hover {
+                            background: #00ff90;
+                            color: #000000;
+                        }
+
+                    #nav ul li ul {
+                        display: none;
+                    }
+
+                    #nav ul li:hover > ul {
+                        display: block;
+                    }
+    </style>
+</head> <!-- Search Wrapper Area Start -->
+
+
+
+
+
+
+
+
+
+<body>
+    <div class="main-content-wrapper d-flex clearfix">
+
+        <!-- Mobile Nav (max width 767px)-->
+        <div class="mobile-nav">
+            <!-- Navbar Brand -->
+            <div class="amado-navbar-brand">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    SneakerSeeker3
+                </a>
+            </div>
+            <!-- Navbar Toggler -->
+            <div class="amado-navbar-toggler">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="col-md-9">
-            @RenderBody()
-        </div>
+
+
+        <header class="header-area clearfix">
+            <!-- Close Icon -->
+            <div class="nav-close">
+                <i class="fa fa-close" aria-hidden="true"></i>
+            </div>
+            <!-- Logo -->
+            <div class="logo">
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                    SneakerSeeker3
+              
+                </a>
+            </div>
+
+                <partial name="_ManageNav" />
+                 
+        </header>
+
+
+
+
+
+
+
+
+        @RenderBody()
+        <hr />
+
     </div>
-</div>
+    <footer style="text-align: center;">
+        <p>&copy; 2019 - SneakerSeeker3</p>
+    </footer>
 
-@section Scripts {
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/jquery/jquery-2.2.4.min.js"></script>
+        <!-- Popper js -->
+        <script src="~/js/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="~/js/bootstrap.min.js"></script>
+        <!-- Plugins js -->
+        <script src="~/js/plugins.js"></script>
+        <!-- Active js -->
+        <script src="~/js/active.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
     @RenderSection("Scripts", required: false)
-}
+</body>
+</html>
