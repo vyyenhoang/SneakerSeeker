@@ -10,14 +10,14 @@ using SneakerSeeker3.Data;
 namespace SneakerSeeker3.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191203053535_seednewproduct2")]
-    partial class seednewproduct2
+    [Migration("20191211000055_UpdateCart")]
+    partial class UpdateCart
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099")
+                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -117,34 +117,22 @@ namespace SneakerSeeker3.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustId");
-
-                    b.ToTable("Cart");
-                });
-
-            modelBuilder.Entity("SneakerSeeker3.Models.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CartId");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10, 2)");
 
                     b.Property<int>("ProductId");
 
-                    b.Property<int>("Qty");
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CartId");
-
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CartItem");
+                    b.ToTable("Cart");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Category", b =>
@@ -156,10 +144,12 @@ namespace SneakerSeeker3.Data.Migrations
                     b.Property<bool>("Active");
 
                     b.Property<string>("CategoryName")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("Description")
-                        .IsRequired();
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.Property<string>("ImageURL");
 
@@ -250,59 +240,75 @@ namespace SneakerSeeker3.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("OrderDate");
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
-                    b.Property<int>("PaymentId");
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(15);
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Province")
+                        .IsRequired()
+                        .HasMaxLength(10);
 
                     b.Property<string>("SneakerSeekerUserId");
 
-                    b.Property<int>("StatusId");
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(10, 2)");
 
-                    b.Property<int?>("cartId");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
                     b.HasKey("OrderId");
 
-                    b.HasIndex("PaymentId");
-
                     b.HasIndex("SneakerSeekerUserId");
-
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("cartId");
 
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("SneakerSeeker3.Models.OrderStatus", b =>
+            modelBuilder.Entity("SneakerSeeker3.Models.OrderDetail", b =>
                 {
-                    b.Property<int>("StatusId")
+                    b.Property<int>("OrderDetailId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Status")
-                        .IsRequired();
+                    b.Property<int>("OrderId");
 
-                    b.HasKey("StatusId");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(10, 2)");
 
-                    b.ToTable("OrderStatus");
-                });
+                    b.Property<int>("ProductId");
 
-            modelBuilder.Entity("SneakerSeeker3.Models.Payment", b =>
-                {
-                    b.Property<int>("PaymentId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Quantity");
 
-                    b.Property<string>("CustId");
+                    b.HasKey("OrderDetailId");
 
-                    b.Property<string>("PaymentType")
-                        .IsRequired();
+                    b.HasIndex("OrderId");
 
-                    b.HasKey("PaymentId");
+                    b.HasIndex("ProductId");
 
-                    b.HasIndex("CustId");
-
-                    b.ToTable("Payment");
+                    b.ToTable("OrderDetail");
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Product", b =>
@@ -315,7 +321,8 @@ namespace SneakerSeeker3.Data.Migrations
 
                     b.Property<int>("ItemColorId");
 
-                    b.Property<string>("ProductDescription");
+                    b.Property<string>("ProductDescription")
+                        .IsRequired();
 
                     b.Property<string>("ProductName")
                         .IsRequired();
@@ -359,7 +366,7 @@ namespace SneakerSeeker3.Data.Migrations
                         new { ProductId = 14, CategoryId = 1, ItemColorId = 1, ProductDescription = "The Authentic, Vans original and now iconic style, is a simple low top", ProductName = "Vans Authentic - Women", ProductURL = "https://scene7.zumiez.com/is/image/zumiez/pdp_hero/FILA-Disruptor-II-3D-Embroidery-White-Shoes-_323532-front-US.jpg", SKU = "0014A", SupplierId = 5, UnitPrice = 200m },
                         new { ProductId = 15, CategoryId = 2, ItemColorId = 8, ProductDescription = "This is one of three regional exclusive colorways that released in March 2019", ProductName = "Adidas Yeezy Boost 350 V2 - women", ProductURL = "https://www.biorley.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/j/j/jj657.jpg", SKU = "0015A", SupplierId = 2, UnitPrice = 150m },
                         new { ProductId = 16, CategoryId = 5, ItemColorId = 2, ProductDescription = "The first sneaker in the EQT line designed with the baller in mind", ProductName = "Adidas EQT Basketball ADV Unisex Running Soes - Men", ProductURL = "https://media.endclothing.com/media/catalog/product/2/3/23-03-2018_adidas_eqtbaskadvw_ashblue_white_ac7353_mg_1.jpg", SKU = "0016A", SupplierId = 2, UnitPrice = 200m },
-                        new { ProductId = 17, CategoryId = 5, ItemColorId = 4, ProductDescription = "The Jordan Retro 13 is a retro version of the shoe MJ wore as he captured his sixth championship", ProductName = "Nike Jordan 13 Retro Alternate - Men", ProductURL = "https://www.snkronline.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/4/1/414571-103_1.jpg", SKU = "0017A", SupplierId = 1, UnitPrice = 150m },
+                        new { ProductId = 17, CategoryId = 5, ItemColorId = 4, ProductDescription = "The Jordan Retro 13 is a retro version of the shoe MJ wore as he captured his sixth championship", ProductName = "Nike Jordan 13 Retro Alternate - Men", ProductURL = "https://www.flightclub.com/media/catalog/product/cache/1/image/1600x1140/9df78eab33525d08d6e5fb8d27136e95/8/0/801265_1.jpg", SKU = "0017A", SupplierId = 1, UnitPrice = 150m },
                         new { ProductId = 18, CategoryId = 2, ItemColorId = 7, ProductDescription = "Keep your outfit cookin with a pair of these Nike Air Max 1", ProductName = "Nike Air Max 1 - women", ProductURL = "https://c.static-nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/ikvlpfgtitt6mybtdcug/nike-air-max-1-premium-dark-curry-release-date.jpg", SKU = "0018A", SupplierId = 1, UnitPrice = 200m },
                         new { ProductId = 19, CategoryId = 1, ItemColorId = 4, ProductDescription = "Stay fly. Stay fresh with most new style of 2019", ProductName = "Puma Clyde Core Lace - Women", ProductURL = "https://cfcdn.zulily.com/images/cache/product/452x1000/271852/zu54008569_main_tm1515613298.jpg", SKU = "0019A", SupplierId = 3, UnitPrice = 150m },
                         new { ProductId = 20, CategoryId = 5, ItemColorId = 4, ProductDescription = "In a fast-paced world, your senses need to be sharp", ProductName = "Puma LQDCELL Optic Sci-Fi Training Shoes - women", ProductURL = "https://images.puma.net/images/192941/02/sv01/fnd/PNA/w/600/h/600/", SKU = "0020A", SupplierId = 3, UnitPrice = 200m }
@@ -373,6 +380,8 @@ namespace SneakerSeeker3.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int?>("CartId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -380,6 +389,8 @@ namespace SneakerSeeker3.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FavouriteShoes");
 
                     b.Property<string>("FirstName");
 
@@ -409,6 +420,8 @@ namespace SneakerSeeker3.Data.Migrations
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -458,7 +471,8 @@ namespace SneakerSeeker3.Data.Migrations
                     b.Property<string>("CompanyName")
                         .IsRequired();
 
-                    b.Property<string>("URL");
+                    b.Property<string>("URL")
+                        .IsRequired();
 
                     b.HasKey("SupplierId");
 
@@ -520,20 +534,8 @@ namespace SneakerSeeker3.Data.Migrations
 
             modelBuilder.Entity("SneakerSeeker3.Models.Cart", b =>
                 {
-                    b.HasOne("SneakerSeeker3.Models.SneakerSeekerUser", "Cust")
-                        .WithMany()
-                        .HasForeignKey("CustId");
-                });
-
-            modelBuilder.Entity("SneakerSeeker3.Models.CartItem", b =>
-                {
-                    b.HasOne("SneakerSeeker3.Models.Cart", "cart")
-                        .WithMany("CartItems")
-                        .HasForeignKey("CartId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SneakerSeeker3.Models.Product", "Pro")
-                        .WithMany()
+                    b.HasOne("SneakerSeeker3.Models.Product", "Product")
+                        .WithMany("Cart")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
@@ -547,30 +549,22 @@ namespace SneakerSeeker3.Data.Migrations
 
             modelBuilder.Entity("SneakerSeeker3.Models.Order", b =>
                 {
-                    b.HasOne("SneakerSeeker3.Models.Payment", "Pay")
-                        .WithMany("Ord")
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("SneakerSeeker3.Models.SneakerSeekerUser")
                         .WithMany("Orders")
                         .HasForeignKey("SneakerSeekerUserId");
-
-                    b.HasOne("SneakerSeeker3.Models.OrderStatus", "Stat")
-                        .WithMany("Ord")
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SneakerSeeker3.Models.Cart", "cart")
-                        .WithMany()
-                        .HasForeignKey("cartId");
                 });
 
-            modelBuilder.Entity("SneakerSeeker3.Models.Payment", b =>
+            modelBuilder.Entity("SneakerSeeker3.Models.OrderDetail", b =>
                 {
-                    b.HasOne("SneakerSeeker3.Models.SneakerSeekerUser", "Cust")
-                        .WithMany("Payment")
-                        .HasForeignKey("CustId");
+                    b.HasOne("SneakerSeeker3.Models.Order", "Order")
+                        .WithMany("OrderDetail")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SneakerSeeker3.Models.Product", "Product")
+                        .WithMany("OrderDetail")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SneakerSeeker3.Models.Product", b =>
@@ -593,6 +587,13 @@ namespace SneakerSeeker3.Data.Migrations
                     b.HasOne("SneakerSeeker3.Models.ItemSize", "size")
                         .WithMany("Products")
                         .HasForeignKey("sizeItemSizeId");
+                });
+
+            modelBuilder.Entity("SneakerSeeker3.Models.SneakerSeekerUser", b =>
+                {
+                    b.HasOne("SneakerSeeker3.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartId");
                 });
 #pragma warning restore 612, 618
         }

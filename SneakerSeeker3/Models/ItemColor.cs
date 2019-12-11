@@ -13,7 +13,7 @@ namespace SneakerSeeker3.Models
 
         [Required(ErrorMessage = "Please enter Color")]
         [Display(Name = "Color")]
-        [StringLength(25, ErrorMessage = "Color could not be greater than 25 characters")]
+        //[StringLength(25, ErrorMessage = "Color could not be greater than 25 characters")]
         public virtual String Color { get; set; }
 
         public virtual List<Product> Products { get; set; }

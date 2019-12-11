@@ -13,17 +13,15 @@ namespace SneakerSeeker3.Models
     public class Cart
     {
 
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public virtual int Id { get; set; }
-
-        public virtual int ProductId { get; set; }
-        public virtual int Quantity { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
         [Column(TypeName = "decimal(10, 2)")]
-        public virtual decimal Price { get; set; }
+        public decimal Price { get; set; }
         [Required]
         [StringLength(100)]
-        public virtual string Username { get; set; }
+        public string Username { get; set; }
 
         [ForeignKey("ProductId")]
         [InverseProperty("Cart")]

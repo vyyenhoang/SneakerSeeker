@@ -20,7 +20,7 @@ namespace SneakerSeeker3.Models
         public virtual String LastName { get; set; }
 		public virtual String FavouriteShoes { get; set; }
 		public virtual List<Order> Orders { get; set; }
-        public virtual List<Payment> Payment { get; set; }
+      
 		public virtual int? CartId { get; set; }
 		[ForeignKey("CartId")]
 		public virtual Cart Cart { get; set; }

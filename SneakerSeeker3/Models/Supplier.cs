@@ -25,7 +25,7 @@ namespace SneakerSeeker3.Models
         public virtual int SupplierId { get; set; } //Primary Key
         [Required(ErrorMessage = "Please enter Company Name")]
         [Display(Name = "Company Name")]
-        [StringLength(50, ErrorMessage = "Color could not be greater than 50 characters")]
+        //[StringLength(50, ErrorMessage = "Color could not be greater than 50 characters")]
         public virtual String CompanyName { get; set; }
         [Required(ErrorMessage = "Please enter Image URL")]
         public virtual String URL { get; set; }

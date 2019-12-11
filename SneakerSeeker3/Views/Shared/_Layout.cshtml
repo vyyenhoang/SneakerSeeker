@@ -125,6 +125,8 @@
                 </a>
             </div>
 
+
+            @*Add conditon to show admin view if user who signs in is Admin*@
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
 			{
                 <!-- Amado Nav -->
@@ -173,7 +175,6 @@
 
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a asp-area="" asp-controller="Cart" asp-action="" class="cart-nav">
                     <img src="~/img/core-img/cart.png"
                          alt=""> Cart <span>
 

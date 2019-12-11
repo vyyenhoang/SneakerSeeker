@@ -18,8 +18,22 @@
     <Compile Remove="Data\Migrations\20191124185554_UpdateCustomerModel.Designer.cs" />
     <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.cs" />
     <Compile Remove="Data\Migrations\20191124190522_UpdateCustomerModel.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203053535_seednewproduct2.cs" />
+    <Compile Remove="Data\Migrations\20191203053535_seednewproduct2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191203181612_UpdateCart.cs" />
+    <Compile Remove="Data\Migrations\20191203181612_UpdateCart.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191204035453_seednewproduct3.cs" />
+    <Compile Remove="Data\Migrations\20191204035453_seednewproduct3.Designer.cs" />
     <Compile Remove="Data\Migrations\20191207165419_AddShoppingCart.cs" />
     <Compile Remove="Data\Migrations\20191207165419_AddShoppingCart.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191207184221_seednewproduct4.cs" />
+    <Compile Remove="Data\Migrations\20191207184221_seednewproduct4.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191208015723_seednewproduct5.cs" />
+    <Compile Remove="Data\Migrations\20191208015723_seednewproduct5.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191210203159_AddToCart.cs" />
+    <Compile Remove="Data\Migrations\20191210203159_AddToCart.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191210233819_AddToCartVer2.cs" />
+    <Compile Remove="Data\Migrations\20191210233819_AddToCartVer2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
