@@ -3,13 +3,12 @@
 @{
     ViewData["Title"] = "Details";
 }
+<div class="cart-table-area section-padding-100">
+    <h2>Details</h2>
 
-<h2>Details</h2>
-
-<div>
     <h4>Supplier</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="table-responsive-sm">
         <dt>
             @Html.DisplayNameFor(model => model.CompanyName)
         </dt>
@@ -24,7 +23,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.SupplierId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.SupplierId">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
