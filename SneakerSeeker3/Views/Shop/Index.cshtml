@@ -165,10 +165,30 @@
 
                             <!-- Ratings & Cart -->
                             <div class="ratings-cart text-right">
-                               
-                                <div class="cart">
+
+                                @*<div class="cart">
                                     <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                </div>*@
+
+                                <div  asp-class="ratings-cart text-right">
+                                    <div class="cart-btn d-flex mb-50">
+
+                                        <input name="Quantity" id="Quantity"  min="1" type="hidden"  />
+                                        <input name="ProductId" id="ProductId" value="@product.ProductId" type="hidden" />
+
+                                        <a asp-action="Cart" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+
+
+                                    </div>
+
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                    <a href="javascript:history.go(-1);" class="btn btn-primary">  Back to List</a>
                                 </div>
+
+
+
+
+
                             </div>
                         </div>
                     </div>
