@@ -4,69 +4,69 @@
     ViewData["Title"] = "Details";
 }
 
-    <div class="cart-table-area section-padding-100">
-        <div class="container-fluid">
-            <div class="col-12 col-lg-12">
+    <div class="products-catagories-area clearfix">
+        <h2>Details</h2>
+        <br />
+        <h3>Preview before live</h3>
+        <div>
+            <h4>Product</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.SKU)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.SKU)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductDescription)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UnitPrice)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductURL)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductURL)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cat)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cat.CategoryName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sup)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Sup.CompanyName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.color)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.color.Color)
+                </dd>
+            </dl>
+        </div>
+        <hr />
+        <div>
 
-                <h2>Details of This Shoes</h2>
-
-                <div>
-                    <hr />
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.SKU)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.SKU)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ProductName)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.ProductName)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ProductDescription)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.ProductDescription)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.UnitPrice)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.UnitPrice)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ProductURL)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.ProductURL)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Cat)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Cat.CategoryName)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Sup)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.Sup.CompanyName)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.color)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.color.Color)
-                        </dd>
-                    </dl>
-                </div>
-                <div>
-                    <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
-                    <a asp-action="Index">Back to List</a>
-                </div>
-            </div>
+            <a asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a> |
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
+       

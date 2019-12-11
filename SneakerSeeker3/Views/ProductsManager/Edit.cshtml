@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-lg-8">
-                    <div class="checkout_details_area mt-50 clearfix">
+                    <div class="editproductarea mt-50 clearfix">
                         <div class="cart-title">
                             <h2>Edit Information of This Shoes Here</h2>
                         </div>
@@ -29,7 +29,7 @@
                                         <input asp-for="ProductName" class="form-control" />
                                         <span asp-validation-for="ProductName" class="text-danger"></span>
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-12 mb-3">
                                         <label asp-for="ProductDescription" class="control-label"></label>
                                         <input asp-for="ProductDescription" class="form-control" />
                                         <span asp-validation-for="ProductDescription" class="text-danger"></span>
@@ -44,23 +44,27 @@
                                         <input asp-for="ProductURL" class="form-control" />
                                         <span asp-validation-for="ProductURL" class="text-danger"></span>
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-12 mb-3">
                                         <label asp-for="CategoryId" class="control-label">Category</label>
+                                        <br />
                                         <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
 
-                                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                        <span asp-validation-for="CategoryId"></span>
 
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-12 mb-3">
                                         <label asp-for="SupplierId" class="control-label">Supplier</label>
+                                        <br />
                                         <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.SupplierId"></select>
-                                        <span asp-validation-for="SupplierId" class="text-danger"></span>
+                                        <span asp-validation-for="SupplierId"></span>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                      <label asp-for="ItemColorId" class="control-label">Color</label>
+                                    <div class="col-12 mb-3">
+                                        <label asp-for="ItemColorId" class="control-label">Color</label>
+                                        <br />
                                         <select asp-for="ItemColorId" class="form-control" asp-items="ViewBag.ItemColorId"></select>
-                                        <span asp-validation-for="ItemColorId" class="text-danger"></span>
+                                        <span asp-validation-for="ItemColorId"></span>
                                     </div>
+                                    <hr />
                                     <div class="cart-btn mt-50">
                                         <input type="submit" value="Save" class="btn amado-btn mb-15" style="border: solid 2px;" />
                                     </div>
@@ -73,6 +77,7 @@
                     <a asp-action="Index">Back to List</a>
                 </div>
             </div>
+        </div>
 
 
             @section Scripts {
