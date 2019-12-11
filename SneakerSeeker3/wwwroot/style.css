@@ -139,3 +139,16 @@ body{
 .main-content-wrapper .products-catagories-area {
     padding-top: 100px;
 }
+
+.form-control {
+	width: 40%;
+}
+
+.btn-default {
+	color: white;
+	background-color: #DB4455;
+	padding: 10px 10px;
+	font-size: 18px;
+	width: 10%;
+}
+
