@@ -47,7 +47,7 @@ namespace SneakerSeeker3.Models
 
         [Required(ErrorMessage = "Please enter Unit Price for this product")]
         [Display(Name = "Price")]
-        [DataType(DataType.Currency)]
+      
         public virtual Decimal UnitPrice { get; set; }
         
         [Display(Name = "Product Image")]

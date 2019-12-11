@@ -158,38 +158,31 @@
                             <div class="hover-content">
                                 <div class="product-meta-data">
                                     <div class="line"></div>
-                                    <p class="product-price">CAD@(product.UnitPrice)</p>
+                                    <p class="product-price"> CAD @(product.UnitPrice)</p>
                                     <h4>@(product.ProductName)</h4>
                                 </div>
                             </div>
 
-                            <!-- Ratings & Cart -->
-                            <div class="ratings-cart text-right">
+                            <!-- Cart -->
+                            @*<div class="ratings-cart text-right">
 
-                                @*<div class="cart">
-                                    <a href="cart.html" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
-                                </div>*@
 
                                 <div  asp-class="ratings-cart text-right">
                                     <div class="cart-btn d-flex mb-50">
 
-                                        <input name="Quantity" id="Quantity"  min="1" type="hidden"  />
+                                        <input name="Quantity" id="Quantity" min="1" type="hidden" />
                                         <input name="ProductId" id="ProductId" value="@product.ProductId" type="hidden" />
 
-                                        <a asp-action="Cart" data-toggle="tooltip" data-placement="left" title="Add to Cart"><img src="img/core-img/cart.png" alt=""></a>
+                                        <div class="AddToCart" id="AddToCart-@(product.ProductId)"></div>
 
+                                        <a class="btn amado-btn" href="@Url.Action("Cart", "Shop", new { id=product.ProductId})">Add To Cart</a>
 
                                     </div>
 
-                                    <button class="btn btn-primary">Add to Cart</button>
-                                    <a href="javascript:history.go(-1);" class="btn btn-primary">  Back to List</a>
+                               
                                 </div>
 
-
-
-
-
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

@@ -175,16 +175,16 @@
 
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                    <img src="~/img/core-img/cart.png"
-                         alt=""> Cart <span>
-
-                        @if (TempData["product"] != null)
-                        {@TempData["product"]}
-
-                    </span>
-
+                <a  asp-controller="Shop" asp-action="Cart" class="cart-nav">
+                    <img src="~/img/core-img/cart.png" alt=""> Cart <span>
+    @if (TempData["product"] != null)
+    {@TempData["product"]}
+</span>
                 </a>
-         
+
+              
+              
+
                 <a href="#" class="search-nav"><img src="~/img/core-img/search.png" alt=""> Search</a>
             </div>
             <!-- Social Button -->

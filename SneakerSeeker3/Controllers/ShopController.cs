@@ -280,6 +280,16 @@ namespace SneakerSeeker3.Controllers
             //#endregion
 
         }
+        ////add to cart @ shop index
+        //public ActionResult AddToCart(int id)
+        //{
+        //    Models.Product obj = new Models.Product();
+        //    obj.ProductId = _context.Product.Find(id).ProductId;
+        //    TempData["product"] = 1;
+        //    return RedirectToAction("Index");
+        //}
+
+
 
 
         /* POST: /AddToCart */
@@ -474,8 +484,8 @@ namespace SneakerSeeker3.Controllers
             var charge = chargeService.Create(new ChargeCreateOptions
             {
                 Amount = Convert.ToInt32(order.Total * 100),
-                Description = "Ctrl-Alt-PC Purchase",
-                Currency = "cad",
+                Description = "Sneaker Seeker Purchase",
+                Currency = "CAD",
                 Customer = customer.Id
             });
 
@@ -509,7 +519,7 @@ namespace SneakerSeeker3.Controllers
             return RedirectToAction("Details", "Orders", new { id = order.OrderId });
         }
 
-
+      
         // GET: Shop/Details/5
         public async Task<IActionResult> Details(int? id)
         {
