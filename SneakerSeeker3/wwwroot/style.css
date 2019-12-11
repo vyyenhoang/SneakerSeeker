@@ -157,6 +157,7 @@ body{
     width: 20%;
 }
 
+
 .btn-link {
 	color: white;
 	font-size: 18px;
@@ -175,3 +176,8 @@ body{
 }
 
 
+
+.main-content-wrapper .cart-table-area .cart-summary {
+    margin-top: 75px;
+    padding: 30px 400px;
+}
