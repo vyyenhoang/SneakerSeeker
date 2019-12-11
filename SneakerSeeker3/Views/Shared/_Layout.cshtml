@@ -132,8 +132,9 @@
                 <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">Manager View <b class="caret"></b></a>
+                    @*<li class="dropdown">*@
+                    
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">  Manager View <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a asp-area="" asp-controller="CategoriesManager" asp-action="Index">Category Menu</a></li>
                             <li><a asp-area="" asp-controller="ProductsManager" asp-action="Index">Product Menu</a></li>
@@ -141,7 +142,7 @@
                             <li><a asp-area="" asp-controller="ItemSizesManager" asp-action="Index">Size Menu</a></li>
                             <li><a asp-area="" asp-controller="ItemColorsManager" asp-action="Index">Color Menu</a></li>
                         </ul>
-                    </li>
+                 
                     <li>
                         <a asp-area="" asp-controller="Shop" asp-action="Index">All Products</a>
                     </li>
@@ -177,8 +178,7 @@
             <div class="cart-fav-search mb-100">
                 <a  asp-controller="Shop" asp-action="Cart" class="cart-nav">
                     <img src="~/img/core-img/cart.png" alt=""> Cart <span>
-    @if (TempData["product"] != null)
-    {@TempData["product"]}
+   
 </span>
                 </a>
 
