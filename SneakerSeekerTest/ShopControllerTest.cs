@@ -1,6 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
+using VideoGameStore2.Controllers;
+using Xunit;
+using System.Linq;
+using VideoGameStore2.Models;
 
 namespace SneakerSeekerTest
 {
