@@ -18,7 +18,7 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
-                               
+                                <th> @Html.DisplayNameFor(model => model.Product.ProductURL)</th>
                                 <th> @Html.DisplayNameFor(model => model.Product)</th>
                                 <th>@Html.DisplayNameFor(model => model.Price)</th>
                                 <th> @Html.DisplayNameFor(model => model.Quantity)</th>
@@ -28,35 +28,44 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-
+                            
                                 total += item.Quantity * item.Price;  // update the running total of the whole cart
-                                <tr>
+                            <tr>
+                                
+                                <td class="cart_product_img">
 
+                                    <a href="@Url.Action("Details", "Shop", new { id = item.ProductId })"><img src=" @Html.DisplayFor(modelItem => item.Product.ProductURL)" alt="Product"></a>
 
-                                    <td class="cart_product_desc">
-                                        @Html.DisplayFor(modelItem => item.Product.ProductName)
-                                    </td>
+                               
 
-                                    <td class="price">
-                                        @String.Format("{0:c}", item.Price)
-                                    </td>
+                                </td>
+                              
+                                <td class="cart_product_desc">
+                                    @Html.DisplayFor(modelItem => item.Product.ProductName)
+                                </td>
 
-                                    <td class="qty">
-                                        <div class="qty-btn d-flex">
+                                <td class="price">
+                                    @String.Format("{0:c}", item.Price)
+                                </td>
 
-                                            <div class="quantity">
-                                                @Html.DisplayFor(modelItem => item.Quantity)
-                                            </div>
+                                <td class="qty">
+                                    <div class="qty-btn d-flex">
+
+                                        <div class="quantity">
+                                            @Html.DisplayFor(modelItem => item.Quantity)
                                         </div>
-                                    </td>
+                                    </div>
+                                </td>
 
 
-                                    <td>
-                                        <a asp-action="RemoveFromCart" asp-route-id="@item.Id" onclick="return confirmDelete();">Delete</a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
+                                <td>
+                                    <a asp-action="RemoveFromCart" asp-route-id="@item.Id" onclick="return confirmDelete();">Delete</a>
+                                </td>
+
+                            </tr>
+                               
+                                }
+</tbody>
                     </table>
                 </div>
             </div>
@@ -75,6 +84,9 @@
 
                     <div class="cart-btn mt-100">
                         <a asp-controller="Shop" asp-action="Index" class="btn amado-btn w-100">Keep Shopping</a>
+                        <br />
+                        <br />
+
                         <a asp-controller="Shop" asp-action="Checkout" class="btn amado-btn w-100">Checkout</a>
                     </div>
                 </div>
