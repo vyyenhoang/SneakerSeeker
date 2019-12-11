@@ -35,14 +35,24 @@ body{
 }
 
 .main-content-wrapper .header-area .amado-nav li a::after {
+    
     background-color: #DB4455;
 }
 .main-content-wrapper .header-area .amado-nav li a:hover{
     color: #DB4455;
+   
 
+}
+.main-content-wrapper .header-area .amado-nav li {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .main-content-wrapper .header-area .amado-nav li a:focus {
+    color: #DB4455;
+}
+
+.main-content-wrapper .header-area .amado-nav .dd {
     color: #DB4455;
 }
 
